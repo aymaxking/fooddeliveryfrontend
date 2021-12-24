@@ -5,6 +5,7 @@ import { AddPlaceComponent } from './add-place/add-place.component';
 import { EditPlaceComponent } from './edit-place/edit-place.component';
 import { PlaceModuleRoutingModule } from './place-module-routing.module';
 import {AppModule} from "../../../app.module";
+import { PlaceModuleComponent } from './place-module.component';
 
 
 
@@ -12,7 +13,8 @@ import {AppModule} from "../../../app.module";
   declarations: [
     PlaceListComponent,
     AddPlaceComponent,
-    EditPlaceComponent
+    EditPlaceComponent,
+    PlaceModuleComponent
   ],
   imports: [
     CommonModule,

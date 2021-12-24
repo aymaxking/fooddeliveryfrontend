@@ -4,6 +4,7 @@ import { DeliveryListComponent } from './delivery-list/delivery-list.component';
 import { AddDeliveryComponent } from './add-delivery/add-delivery.component';
 import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
 import { DeliveryModuleRoutingModule } from './delivery-module-routing.module';
+import { DeliveryModuleComponent } from './delivery-module.component';
 
 
 
@@ -11,7 +12,8 @@ import { DeliveryModuleRoutingModule } from './delivery-module-routing.module';
   declarations: [
     DeliveryListComponent,
     AddDeliveryComponent,
-    EditDeliveryComponent
+    EditDeliveryComponent,
+    DeliveryModuleComponent
   ],
   imports: [
     CommonModule,

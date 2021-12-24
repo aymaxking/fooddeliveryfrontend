@@ -1,1 +1,15 @@
-<p>category-list works!</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Category</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let category of allcategories; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ category.title}}</td>
+  </tr>
+  </tbody>
+</table>

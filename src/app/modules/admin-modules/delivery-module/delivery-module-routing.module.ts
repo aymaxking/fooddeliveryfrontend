@@ -4,12 +4,16 @@ import {RouterModule, Routes} from "@angular/router";
 import {DeliveryListComponent} from "./delivery-list/delivery-list.component";
 import {AddDeliveryComponent} from "./add-delivery/add-delivery.component";
 import {EditDeliveryComponent} from "./edit-delivery/edit-delivery.component";
+import {DeliveryModuleComponent} from "./delivery-module.component";
 
 
 
 const routes: Routes = [
   {
-    path: "", component:DeliveryListComponent,
+    path: "", component:DeliveryModuleComponent,
+  },
+  {
+    path: "list", component:DeliveryListComponent,
   },
   {
     path: "add", component:AddDeliveryComponent,
