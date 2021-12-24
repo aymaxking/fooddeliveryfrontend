@@ -1,0 +1,36 @@
+<div class="m-3">
+  <p>Angular ng-bootstrap table : filter and pagination</p>
+  <form>
+    <div class="form-group form-inline">
+      Search place by name:
+<!--      <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="searchTerm"-->
+<!--             (input)="search($event.target.value)" />-->
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" sortable="name">Name</th>
+      <th scope="col" sortable="area">Description</th>
+      <th scope="col" sortable="population">Locations</th>
+      <th scope="col" sortable="population">Menu</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let place of places">
+      <td>
+        {{ place.title}}
+      </td>
+      <td>{{ place.description}}</td>
+      <td><a>Consulter</a></td>
+      <td><a>Consulter</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+<!--  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"-->
+<!--                  [pageSize]="pageSize" class="d-flex justify-content-center"></ngb-pagination>-->
+</div>
+<router-outlet></router-outlet>
