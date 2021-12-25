@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <a class="btn btn-primary" style="align-content: center" >Add New Type</a>
+  <br>      <br>
+  <div class="row">
+    <div class="col-sm-2" style="margin-top: 2%" *ngFor="let type of altypes">
+      <div class="card" >
+        <img src="assets/icons/hamburger.png" id="icon">
+        <div class="card-body">
+          <h5 class="card-title">{{type.title}}</h5>
+          <p class="card-text" style="text-align: right"></p>
+        </div>
+        <div class="card-footer" style="text-align: center;" >
+          <a class="btn btn-primary" style="margin-right: 25%" >Edit</a>
+          <a class="btn btn-danger" >Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -6,6 +6,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CategoryModuleRoutingModule } from './category-module-routing.module';
 import { CategoryModuleComponent } from './category-module.component';
 import {AdminModulesModule} from "../admin-modules.module";
+import { DetailsCategoryComponent } from './details-category/details-category.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -14,12 +16,14 @@ import {AdminModulesModule} from "../admin-modules.module";
     CategoryListComponent,
     AddCategoryComponent,
     EditCategoryComponent,
-    CategoryModuleComponent
+    CategoryModuleComponent,
+    DetailsCategoryComponent
   ],
   imports: [
     CommonModule,
     CategoryModuleRoutingModule,
-    AdminModulesModule
+    AdminModulesModule,
+    FormsModule
   ]
 })
 export class CategoryModuleModule { }

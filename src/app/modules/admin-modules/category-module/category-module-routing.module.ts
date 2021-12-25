@@ -4,6 +4,7 @@ import {CategoryListComponent} from "./category-list/category-list.component";
 import {AddCategoryComponent} from "./add-category/add-category.component";
 import {EditCategoryComponent} from "./edit-category/edit-category.component";
 import {CategoryModuleComponent} from "./category-module.component";
+import {DetailsCategoryComponent} from "./details-category/details-category.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path: "edit/:id", component:EditCategoryComponent,
+  },
+  {
+    path: "details/:id", component:DetailsCategoryComponent,
   },
 ]
 

@@ -14,24 +14,60 @@ export class CategoryListComponent implements OnInit {
   // @ts-ignore
   allcategories: Category[];
   totalElements: any;
-  size:any;
+  size=8;
   t:any;
+  currentpage=1
+  maxpages=0;
+  title="";
 
-  constructor(private categoryService: CategoryService) {
+  categoryEditPopupDisplayStyle = "none";
+  editedCategory:Category= Object();
 
+  categoryAddPopupDisplayStyle = "none";
+
+
+
+  constructor(private categoryService: CategoryService) {}
+
+  ngOnInit(): void {this.getData(0)}
+
+  getData(p:number){
+    if(this.title=="") {
+      this.categoryService.getCategories().subscribe((data: Category[]) => {
+        this.maxpages = Math.ceil(data.length / this.size);
+        this.totalElements = Array.from(Array(this.maxpages).keys());
+      })
+      this.categoryService.getCategoriesByPage(p, this.size).subscribe((data: Category[]) => {
+        this.allcategories = data;
+      })
+      this.currentpage = p;
+    }
+    else{
+      this.categoryService.getCategoriesByTitle(this.title).subscribe((data: Category[]) => {
+        this.maxpages=Math.ceil(data.length/this.size);
+        this.totalElements= Array.from(Array(this.maxpages).keys());
+      })
+      this.categoryService.getCategoriesByTitleByPage(this.title,p,this.size).subscribe((data: Category[]) => {
+        this.allcategories = data;
+      })
+      this.currentpage=p;
+    }
   }
 
-  ngOnInit(): void {
-    this.getData(0,5)
+
+  openEditItemPopup(edited:Category){
+    this.categoryEditPopupDisplayStyle = "block";
+    this.editedCategory=edited;
+  }
+  closeEditItemPopup() {
+    this.categoryEditPopupDisplayStyle = "none";
   }
 
-  getData(p:number,s:number){
-    this.categoryService.getCategoriesByPage(p,s).subscribe((data: Category[]) => {
-      this.allcategories = data;
-      this.totalElements= Array.from(Array(Math.ceil(this.t/s)).keys());
-      this.size=s;
-    })
-    console.log(p+"/"+s);
-  }
 
+  openAddItemPopup(){
+    this.categoryAddPopupDisplayStyle = "block";
+  }
+  closeAddItemPopup() {
+    this.categoryAddPopupDisplayStyle = "none";
+  }
 }
