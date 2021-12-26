@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {clientsUrl} from "../../../global-variables";
+import {categoriesUrl, clientsUrl} from "../../../global-variables";
 import {Client} from "../../../models/client";
+import {Category} from "../../../models/category";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,17 @@ export class ClientService {
 
   getClients(): Observable<Client[]> {
     return this.http.get<Client[]>(clientsUrl)
+  }
+
+  getClientsByPage(page:number,size:number): Observable<Client[]> {
+    return this.http.get<Client[]>(clientsUrl+"page/"+page+"/"+size)
+  }
+
+  getClientsByTerm(term:string): Observable<Client[]> {
+    return this.http.get<Client[]>(clientsUrl+"byAll/"+term)
+  }
+  getClientsByTermByPage(term:string,page:number,size:number): Observable<Client[]> {
+    return this.http.get<Client[]>(clientsUrl+"byAll/"+term+"/"+page+"/"+size)
   }
 
   getClient(id: number): Observable<Client> {

@@ -20,7 +20,8 @@ export class DetailsCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getCategory(this.categoryid).subscribe((data: Category) => {
-     this.altypes=data.types;
+     // @ts-ignore
+      this.altypes=data.types;
     })  }
 
 

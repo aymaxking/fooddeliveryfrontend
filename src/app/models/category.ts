@@ -1,14 +1,19 @@
 import {Type} from "./type";
 
 export class Category  {
-   id:number;
+   id?:number;
    title:string;
-   types:Type[];
+   types?:Type[];
 
-  constructor(id:number,title:string,types:Type[]) {
-    this.id=id;
+  constructor(title:string,id?:number,types?:Type[]) {
+    if (id != undefined) {
+      this.id = id;
+    }
+    if (types != undefined) {
+      this.types=types;
+    }
     this.title=title;
-    this.types=types;
   }
+
 
 }

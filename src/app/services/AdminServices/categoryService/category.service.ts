@@ -24,6 +24,9 @@ export class CategoryService {
   getCategoriesByPage(page:number,size:number): Observable<Category[]> {
     return this.http.get<Category[]>(categoriesUrl+"page/"+page+"/"+size)
   }
+
+
+
   getCategory(id: number): Observable<Category> {
     return this.http.get<Category>(categoriesUrl + `${id}`)
   }
@@ -32,6 +35,10 @@ export class CategoryService {
     return this.http.delete(categoriesUrl+`${id}`)
   }
 
+  addCategory(category: Category): Observable<any> {
+    console.log(category)
+    return this.http.post<Category>(categoriesUrl, category)
+  }
   saveCategory(category: Category): Observable<any> {
     return this.http.put(categoriesUrl+`${category.id}`, category)
   }

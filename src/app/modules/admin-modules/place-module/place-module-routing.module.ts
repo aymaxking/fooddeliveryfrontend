@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {PlaceListComponent} from "./place-list/place-list.component";
 import {AddPlaceComponent} from "./add-place/add-place.component";
@@ -30,4 +29,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class PlaceModuleRoutingModule { }
+export class PlaceModuleRoutingModule {
+
+}

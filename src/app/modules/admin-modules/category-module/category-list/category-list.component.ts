@@ -2,6 +2,8 @@ import {Component, OnInit, PipeTransform} from '@angular/core';
 import {Category} from "../../../../models/category";
 import {DecimalPipe} from "@angular/common";
 import {CategoryService} from "../../../../services/AdminServices/categoryService/category.service";
+import {NgForm} from "@angular/forms";
+import {Type} from "../../../../models/type";
 ;
 
 @Component({
@@ -61,6 +63,15 @@ export class CategoryListComponent implements OnInit {
   }
   closeEditItemPopup() {
     this.categoryEditPopupDisplayStyle = "none";
+  }
+
+  addCategory(title:string){
+    this.categoryService.addCategory(new Category(title))
+  }
+
+
+  saveCategory(category:Category){
+    this.categoryService.saveCategory(category)
   }
 
 
