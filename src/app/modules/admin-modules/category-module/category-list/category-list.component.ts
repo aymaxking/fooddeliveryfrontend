@@ -4,6 +4,7 @@ import {DecimalPipe} from "@angular/common";
 import {CategoryService} from "../../../../services/AdminServices/categoryService/category.service";
 import {NgForm} from "@angular/forms";
 import {Type} from "../../../../models/type";
+
 ;
 
 @Component({
@@ -16,25 +17,30 @@ export class CategoryListComponent implements OnInit {
   // @ts-ignore
   allcategories: Category[];
   totalElements: any;
-  size=8;
-  t:any;
-  currentpage=1
-  maxpages=0;
-  title="";
+  size = 8;
+  t: any;
+  currentpage = 1
+  maxpages = 0;
+  title = "";
 
   categoryEditPopupDisplayStyle = "none";
-  editedCategory:Category= Object();
+  editedCategory: Category = Object();
 
   categoryAddPopupDisplayStyle = "none";
 
+  categoryDeletePopupDisplayStyle = "none";
+  deletedCategory: Category = Object();
 
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService) {
+  }
 
-  ngOnInit(): void {this.getData(0)}
+  ngOnInit(): void {
+    this.getData(0)
+  }
 
-  getData(p:number){
-    if(this.title=="") {
+  getData(p: number) {
+    if (this.title == "") {
       this.categoryService.getCategories().subscribe((data: Category[]) => {
         this.maxpages = Math.ceil(data.length / this.size);
         this.totalElements = Array.from(Array(this.maxpages).keys());
@@ -43,42 +49,69 @@ export class CategoryListComponent implements OnInit {
         this.allcategories = data;
       })
       this.currentpage = p;
-    }
-    else{
+    } else {
       this.categoryService.getCategoriesByTitle(this.title).subscribe((data: Category[]) => {
-        this.maxpages=Math.ceil(data.length/this.size);
-        this.totalElements= Array.from(Array(this.maxpages).keys());
+        this.maxpages = Math.ceil(data.length / this.size);
+        this.totalElements = Array.from(Array(this.maxpages).keys());
       })
-      this.categoryService.getCategoriesByTitleByPage(this.title,p,this.size).subscribe((data: Category[]) => {
+      this.categoryService.getCategoriesByTitleByPage(this.title, p, this.size).subscribe((data: Category[]) => {
         this.allcategories = data;
       })
-      this.currentpage=p;
+      this.currentpage = p;
     }
   }
 
 
-  openEditItemPopup(edited:Category){
+  openEditItemPopup(edited: Category) {
     this.categoryEditPopupDisplayStyle = "block";
-    this.editedCategory=edited;
+    this.editedCategory = edited;
   }
+
   closeEditItemPopup() {
     this.categoryEditPopupDisplayStyle = "none";
   }
 
-  addCategory(title:string){
-    this.categoryService.addCategory(new Category(title))
+  addCategory(title: string) {
+    try {
+      this.categoryService.addCategory(new Category(title)).subscribe()
+    } catch (e) {
+      console.log(e.toString())
+    }
   }
 
 
-  saveCategory(category:Category){
+  saveCategory(category: Category) {
     this.categoryService.saveCategory(category)
   }
 
+  deleteCategory(cat : Category) {
+    try {
+      // @ts-ignore
+      this.categoryService.deleteCategory(cat.id.toString()).subscribe(
+        value => console.log(value)
+      )
+    }catch (e:any) {
+    }finally {
+      this.getData(0)
+    }
+  }
 
-  openAddItemPopup(){
+
+
+  openAddItemPopup() {
     this.categoryAddPopupDisplayStyle = "block";
   }
+
   closeAddItemPopup() {
     this.categoryAddPopupDisplayStyle = "none";
+  }
+
+  openDeleteItemPopup(deleted: Category) {
+    this.categoryDeletePopupDisplayStyle = "block";
+    this.deletedCategory=deleted
+  }
+
+  closeDeleteItemPopup() {
+    this.categoryDeletePopupDisplayStyle = "none";
   }
 }

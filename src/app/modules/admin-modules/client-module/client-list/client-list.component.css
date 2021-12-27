@@ -46,11 +46,13 @@
   font-weight: 700;
   padding: 12px;
   border-bottom: none;
+  text-align: center;
 }
-.panel .panel-body .table thead tr th:nth-of-type(1){ width: 120px; }
-.panel .panel-body .table thead tr th:nth-of-type(3){ width: 50%; }
+/*.panel .panel-body .table thead tr th:nth-of-type(1){ width: 120px; }*/
+/*.panel .panel-body .table thead tr th:nth-of-type(3){ width: 50%; }*/
 .panel .panel-body .table tbody tr td{
   color: #555;
+  text-align: center;
   background: #fff;
   font-size: 15px;
   font-weight: 500;

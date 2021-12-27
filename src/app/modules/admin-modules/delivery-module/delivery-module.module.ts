@@ -5,6 +5,7 @@ import { AddDeliveryComponent } from './add-delivery/add-delivery.component';
 import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
 import { DeliveryModuleRoutingModule } from './delivery-module-routing.module';
 import { DeliveryModuleComponent } from './delivery-module.component';
+import {AdminModulesModule} from "../admin-modules.module";
 
 
 
@@ -15,9 +16,10 @@ import { DeliveryModuleComponent } from './delivery-module.component';
     EditDeliveryComponent,
     DeliveryModuleComponent
   ],
-  imports: [
-    CommonModule,
-    DeliveryModuleRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        DeliveryModuleRoutingModule,
+        AdminModulesModule
+    ]
 })
 export class DeliveryModuleModule { }

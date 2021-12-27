@@ -8,11 +8,11 @@ import {DetailsCategoryComponent} from "./details-category/details-category.comp
 
 const routes: Routes = [
   {
-    path: "", component:CategoryModuleComponent,
+    path: "", component:CategoryListComponent,
   },
-  {
-    path: "list", component:CategoryListComponent,
-  },
+  // {
+  //   path: "list", component:CategoryListComponent,
+  // },
   {
     path: "add", component:AddCategoryComponent,
   },

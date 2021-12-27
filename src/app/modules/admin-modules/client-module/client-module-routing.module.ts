@@ -10,11 +10,11 @@ import {ClientModuleComponent} from "./client-module.component";
 
 const routes: Routes = [
   {
-    path: "", component:ClientModuleComponent,
+    path: "", component:ClientListComponent,
   },
-  {
-    path: "list", component:ClientListComponent,
-  },
+  // {
+  //   path: "list", component:ClientListComponent,
+  // },
   {
     path: "add", component:AddClientComponent,
   },

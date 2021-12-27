@@ -1,3 +1,4 @@
+<!--edit category-->
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':categoryEditPopupDisplayStyle}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -26,7 +27,7 @@
     </div>
   </div>
 </div>
-
+<!--add category-->
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':categoryAddPopupDisplayStyle}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -43,7 +44,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" (click)="addCategory(newcategoryname.value);newcategoryname.value='';closeAddItemPopup()" class="btn btn-primary">
+        <button type="submit" (click)="addCategory(newcategoryname.value);newcategoryname.value='';getData(0);closeAddItemPopup();" class="btn btn-primary">
           Save
         </button>
         <button type="button" class="btn btn-danger"
@@ -54,7 +55,25 @@
     </div>
   </div>
 </div>
-
+<!--delete category-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':categoryDeletePopupDisplayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Category - {{deletedCategory.title}}</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="deleteCategory(deletedCategory);closeDeleteItemPopup()">
+          Delete
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closeDeleteItemPopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="panel">
@@ -93,17 +112,15 @@
         </thead>
         <tbody>
         <tr *ngFor="let category of allcategories;index as i">
-          <td style="display:none;">{{category.id}}</td>
           <td>{{i + 1}}</td>
           <td>{{category.title}}</td>
           <td>
             <ul class="action-list">
-              <li><a class="btn btn-sm btn-success"><i class="fa fa-search"
-                                                       routerLink="/admin/categories/details/{{category.id}}"></i></a>
+              <li routerLink="/admin/categories/details/{{category.id}}"><a class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
               </li>&nbsp;
-              <li><a class="btn btn-primary"><i class="fa fa-pencil-alt" (click)="openEditItemPopup(category)"></i></a>
+              <li (click)="openEditItemPopup(category)"><a class="btn btn-primary"><i class="fa fa-pencil-alt" ></i></a>
               </li> &nbsp;
-              <li><a class="btn btn-danger"><i class="fa fa-times"></i></a></li>&nbsp;
+              <li (click)="openDeleteItemPopup(category)"><a class="btn btn-danger"><i class="fa fa-times"></i></a></li>&nbsp;
             </ul>
           </td>
         </tr>

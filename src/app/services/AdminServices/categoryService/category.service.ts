@@ -36,8 +36,7 @@ export class CategoryService {
   }
 
   addCategory(category: Category): Observable<any> {
-    console.log(category)
-    return this.http.post<Category>(categoriesUrl, category)
+    return this.http.post<Category>(categoriesUrl,category)
   }
   saveCategory(category: Category): Observable<any> {
     return this.http.put(categoriesUrl+`${category.id}`, category)

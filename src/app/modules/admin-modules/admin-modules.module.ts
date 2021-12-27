@@ -4,6 +4,7 @@ import { AdminModulesComponent } from './admin-modules.component';
 import { AdminModulesRoutingModule } from './admin-modules-routing.module';
 import {NavbarComponent} from "./adminPartials/adminNavbar/navbar.component";
 import {SidebarComponent} from "./adminPartials/adminSidebar/sidebar.component";
+import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
 
 
 
@@ -11,11 +12,13 @@ import {SidebarComponent} from "./adminPartials/adminSidebar/sidebar.component";
   declarations: [
     AdminModulesComponent,
     NavbarComponent,
+    PageNotFoundComponent,
     SidebarComponent
   ],
   exports: [
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
