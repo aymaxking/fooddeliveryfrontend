@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {PlaceModuleComponent} from "../admin-modules/place-module/place-module.component";
 import {PlaceModulesComponent} from "./place-modules.component";
 
 

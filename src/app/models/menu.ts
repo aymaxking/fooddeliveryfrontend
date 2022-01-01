@@ -1,11 +1,11 @@
 import {SubMenu} from "./submenu";
 
 export class Menu{
-  id:number;
+  id?:number;
   title:string;
-  subMenus:SubMenu[];
+  subMenus?:SubMenu[];
 
-  constructor(id:number,title:string,subMenus:SubMenu[]) {
+  constructor(title:string,id?:number,subMenus?:SubMenu[]) {
     this.id=id;
     this.title=title;
     this.subMenus=subMenus;

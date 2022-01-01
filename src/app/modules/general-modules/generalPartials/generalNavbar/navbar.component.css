@@ -1,0 +1,11 @@
+.btn-logout{
+  background-color: transparent;
+  border: none;
+}
+
+.active{
+  color : black !important;
+}
+.nav-link{
+  font-weight:bold ;
+}

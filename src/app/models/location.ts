@@ -1,8 +1,8 @@
 export class Location{
-  id:number;
+  id?:number;
   location:string;
 
-  constructor(id:number,location:string) {
+  constructor(location:string,id?:number) {
     this.id=id;
     this.location=location;
   }

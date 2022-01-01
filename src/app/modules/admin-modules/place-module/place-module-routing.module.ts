@@ -3,17 +3,22 @@ import {RouterModule, Routes} from "@angular/router";
 import {PlaceListComponent} from "./place-list/place-list.component";
 import {AddPlaceComponent} from "./add-place/add-place.component";
 import {EditPlaceComponent} from "./edit-place/edit-place.component";
+import {PlaceModuleComponent} from "./place-module.component";
+import {ApplicationListComponent} from "./application-list/application-list.component";
 
 
 
 
 const routes: Routes = [
   {
-    path: "", component:PlaceListComponent,
+    path: "", component:PlaceModuleComponent,
   },
-  // {
-  //   path: "list", component:PlaceListComponent,
-  // },
+   {
+     path: "list", component:PlaceListComponent,
+   },
+  {
+    path: "applications", component:ApplicationListComponent,
+  },
   {
     path: "add", component:AddPlaceComponent,
   },
