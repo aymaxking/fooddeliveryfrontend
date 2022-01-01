@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PlaceService} from "../../../../services/AdminServices/placeService/place.service";
 import {Place} from "../../../../models/place";
+import {Client} from "../../../../models/client";
 
 @Component({
   selector: 'app-place-list',
@@ -8,29 +9,43 @@ import {Place} from "../../../../models/place";
   styleUrls: ['./place-list.component.css']
 })
 export class PlaceListComponent implements OnInit {
-  searchTerm: string | undefined;
-  page = 1;
-  pageSize = 4;
-  // @ts-ignore
-  collectionSize: number;
-  // @ts-ignore
-  places: Place[] ;
   // @ts-ignore
   allplaces: Place[];
+  totalElements: any;
+  size=8;
+  t:any;
+  currentpage=1
+  maxpages=0;
+  name="";
 
   constructor(private placeService:PlaceService) { }
 
   ngOnInit(): void {
-    this.placeService.getPlaces().subscribe((data: Place[]) => {
-      this.collectionSize = data.length;
-      this.places=data;
-      this.allplaces=this.places;
-    })
+    this.getData(0)
   }
 
-  search(value: string): void {
-    this.places = this.allplaces.filter((val) => val.title.toLowerCase().includes(value));
-    this.collectionSize = this.places.length;
+
+  getData(p:number){
+    if(this.name=="") {
+      this.placeService.getPlaces().subscribe((data: Place[]) => {
+        this.maxpages = Math.ceil(data.length / this.size);
+        this.totalElements = Array.from(Array(this.maxpages).keys());
+      })
+      this.placeService.getPlacesByPage(p, this.size).subscribe((data: Place[]) => {
+        this.allplaces = data;
+      })
+      this.currentpage = p;
+    }
+    else{
+      this.placeService.getPlacesByTerm(this.name).subscribe((data: Place[]) => {
+        this.maxpages=Math.ceil(data.length/this.size);
+        this.totalElements= Array.from(Array(this.maxpages).keys());
+      })
+      this.placeService.getPlacesByTermByPage(this.name,p,this.size).subscribe((data: Place[]) => {
+        this.allplaces = data;
+      })
+      this.currentpage=p;
+    }
   }
 
 

@@ -15,16 +15,18 @@ export class CategoryService {
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(categoriesUrl)
   }
-  getCategoriesByTitle(title:string): Observable<Category[]> {
-    return this.http.get<Category[]>(categoriesUrl+"byTitle/"+title)
-  }
-  getCategoriesByTitleByPage(title:string,page:number,size:number): Observable<Category[]> {
-    return this.http.get<Category[]>(categoriesUrl+"byTitle/"+title+"/"+page+"/"+size)
-  }
-  getCategoriesByPage(page:number,size:number): Observable<Category[]> {
-    return this.http.get<Category[]>(categoriesUrl+"page/"+page+"/"+size)
+
+  getCategoriesByTitle(title: string): Observable<Category[]> {
+    return this.http.get<Category[]>(categoriesUrl + "byTitle/" + title)
   }
 
+  getCategoriesByTitleByPage(title: string, page: number, size: number): Observable<Category[]> {
+    return this.http.get<Category[]>(categoriesUrl + "byTitle/" + title + "/" + page + "/" + size)
+  }
+
+  getCategoriesByPage(page: number, size: number): Observable<Category[]> {
+    return this.http.get<Category[]>(categoriesUrl + "page/" + page + "/" + size)
+  }
 
 
   getCategory(id: number): Observable<Category> {
@@ -32,13 +34,14 @@ export class CategoryService {
   }
 
   deleteCategory(id: string): Observable<any> {
-    return this.http.delete(categoriesUrl+`${id}`)
+    return this.http.delete(categoriesUrl + `${id}`)
   }
 
   addCategory(category: Category): Observable<any> {
-    return this.http.post<Category>(categoriesUrl,category)
+    return this.http.post<Category>(categoriesUrl, category)
   }
+
   saveCategory(category: Category): Observable<any> {
-    return this.http.put(categoriesUrl+`${category.id}`, category)
+    return this.http.put(categoriesUrl + `${category.id}`, category)
   }
 }

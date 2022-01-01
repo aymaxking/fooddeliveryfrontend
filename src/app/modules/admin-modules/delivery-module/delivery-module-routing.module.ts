@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {DeliveryListComponent} from "./delivery-list/delivery-list.component";
 import {AddDeliveryComponent} from "./add-delivery/add-delivery.component";
 import {EditDeliveryComponent} from "./edit-delivery/edit-delivery.component";
-import {DeliveryModuleComponent} from "./delivery-module.component";
 
 
 
 const routes: Routes = [
   {
-    path: "", component:DeliveryModuleComponent,
+    path: "", component:DeliveryListComponent,
   },
-  {
-    path: "list", component:DeliveryListComponent,
-  },
+  // {
+  //   path: "list", component:DeliveryListComponent,
+  // },
   {
     path: "add", component:AddDeliveryComponent,
   },

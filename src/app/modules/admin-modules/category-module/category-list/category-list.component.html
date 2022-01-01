@@ -16,7 +16,9 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary"
-                (click)="editedCategory.title=editedcategoryname.value;saveCategory(editedCategory);closeEditItemPopup()">
+                (click)="editedCategory.title=editedcategoryname.value;
+                saveCategory(editedCategory);
+                closeEditItemPopup()">
           Save
         </button>
         <button type="button" class="btn btn-danger"
@@ -44,7 +46,10 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" (click)="addCategory(newcategoryname.value);newcategoryname.value='';getData(0);closeAddItemPopup();" class="btn btn-primary">
+        <button type="submit" (click)="addCategory(newcategoryname.value);
+        newcategoryname.value='';
+        closeAddItemPopup();
+" class="btn btn-primary">
           Save
         </button>
         <button type="button" class="btn btn-danger"
@@ -63,7 +68,9 @@
         <h4 class="modal-title">Delete Category - {{deletedCategory.title}}</h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="deleteCategory(deletedCategory);closeDeleteItemPopup()">
+        <button type="button" class="btn btn-primary" (click)="deleteCategory(deletedCategory);
+        closeDeleteItemPopup();
+         ">
           Delete
         </button>
         <button type="button" class="btn btn-danger"

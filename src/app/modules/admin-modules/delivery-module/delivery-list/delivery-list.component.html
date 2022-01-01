@@ -1,1 +1,69 @@
-<p>delivery-list works!</p>
+
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="row">
+        <div>
+          <br>
+          <div class="search">
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <div class="search-2"><i class='bx bxs-map'></i>
+                    <input type="text" placeholder="Category Title" #search>
+                    <button *ngIf="title==''" (click)="title=search.value.toString();getData(0)">Search</button>
+                    <button *ngIf="title!=''" (click)="title='';search.value='';getData(0)">Clear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Birthday</th>
+          <th>CIN</th>
+          <th>Adresse</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let delivery of alldeliveries;index as i">
+          <td>{{i + 1}}</td>
+          <td>{{delivery.username}}</td>
+          <td>{{delivery.name}}</td>
+          <td>{{delivery.birthday}}</td>
+          <td>{{delivery.cin}}</td>
+          <td>{{delivery.adresse}}</td>          <td>
+            <ul class="action-list">
+              <li routerLink="/admin/categories/details/{{delivery.id}}"><a class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
+              </li>&nbsp;
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" *ngIf="currentpage>0"
+                                     (click)="getData(currentpage-1)">Previous</a></li>
+            <li class="page-item" *ngFor="let i of totalElements" (click)="getData(i)"><a
+              class="page-link">{{i + 1}}</a></li>
+            <li class="page-item"><a class="page-link" *ngIf="currentpage<maxpages-1" (click)="getData(currentpage+1)">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

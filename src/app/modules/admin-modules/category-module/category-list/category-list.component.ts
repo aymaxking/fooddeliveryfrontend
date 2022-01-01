@@ -26,6 +26,7 @@ export class CategoryListComponent implements OnInit {
   categoryEditPopupDisplayStyle = "none";
   editedCategory: Category = Object();
 
+
   categoryAddPopupDisplayStyle = "none";
 
   categoryDeletePopupDisplayStyle = "none";
@@ -72,28 +73,23 @@ export class CategoryListComponent implements OnInit {
   }
 
   addCategory(title: string) {
-    try {
-      this.categoryService.addCategory(new Category(title)).subscribe()
-    } catch (e) {
-      console.log(e.toString())
-    }
+      this.categoryService.addCategory(new Category(title)).subscribe(
+        value => console.log(value)
+      )
   }
 
 
   saveCategory(category: Category) {
-    this.categoryService.saveCategory(category)
+    this.categoryService.saveCategory(category).subscribe(
+      value => console.log(value)
+    )
   }
 
   deleteCategory(cat : Category) {
-    try {
       // @ts-ignore
       this.categoryService.deleteCategory(cat.id.toString()).subscribe(
         value => console.log(value)
       )
-    }catch (e:any) {
-    }finally {
-      this.getData(0)
-    }
   }
 
 

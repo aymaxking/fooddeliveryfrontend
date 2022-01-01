@@ -7,8 +7,8 @@ import {AdminModulesComponent} from "./admin-modules.component";
 const routes: Routes = [
   {
     path: "",
-    component:AdminModulesComponent,
-    children:[
+    component: AdminModulesComponent,
+    children: [
       {
         path: "categories",
         loadChildren: () => import ('./category-module/category-module.module').then(m => m.CategoryModuleModule),

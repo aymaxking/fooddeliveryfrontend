@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {placesUrl} from 'src/app/global-variables';
+import {clientsUrl, placesUrl} from 'src/app/global-variables';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Place} from "../../../models/place";
+import {Client} from "../../../models/client";
 
 
 @Injectable({
@@ -16,6 +17,16 @@ export class PlaceService {
     return this.http.get<Place[]>(placesUrl)
   }
 
+  getPlacesByPage(page:number,size:number): Observable<Place[]> {
+    return this.http.get<Place[]>(placesUrl+"page/"+page+"/"+size)
+  }
+
+  getPlacesByTerm(term:string): Observable<Place[]> {
+    return this.http.get<Place[]>(placesUrl+"byAll/"+term)
+  }
+  getPlacesByTermByPage(term:string,page:number,size:number): Observable<Place[]> {
+    return this.http.get<Place[]>(placesUrl+"byAll/"+term+"/"+page+"/"+size)
+  }
   getPlace(id: number): Observable<Place> {
     return this.http.get<Place>(placesUrl+`${id}`)
   }
