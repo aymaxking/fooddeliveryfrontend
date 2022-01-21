@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Category} from "../../../models/category";
-import {categoriesUrl} from "../../../global-variables";
+import {categoriesUrl, typesUrl} from "../../../global-variables";
+import {Type} from "../../../models/type";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,18 @@ export class CategoryService {
 
   addCategory(category: Category): Observable<any> {
     return this.http.post<Category>(categoriesUrl, category)
+  }
+
+  addType(type: Type, id: String): Observable<any> {
+    return this.http.put<Type>(categoriesUrl  + id + "/addtype", type)
+  }
+
+  saveType(type: Type): Observable<any> {
+    return this.http.put(typesUrl + `${type.id}`, type)
+  }
+
+  deleteType(id: string): Observable<any> {
+    return this.http.delete(typesUrl + `${id}`)
   }
 
   saveCategory(category: Category): Observable<any> {

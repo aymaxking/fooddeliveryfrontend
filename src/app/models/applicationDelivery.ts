@@ -4,12 +4,16 @@ export class ApplicationDelivery extends Application {
 
   birthday: string;
   city: string;
-  vehiculetpye: string;
+  vehiculeType: string;
+  cin: string;
+  adresse:string;
 
-  constructor(id: number, name: string, date: string, email: string, number: string, birthday: string, city: string, vehiculetpye: string) {
-    super(id, name, date, email, number);
+  constructor(id: number, name: string, date: string, email: string, number: string, birthday: string, city: string, vehiculeType: string,etat:string,CIN:string,adresse:string) {
+    super(id, name, date, email, number, etat);
     this.birthday = birthday;
     this.city = city;
-    this.vehiculetpye = vehiculetpye;
+    this.vehiculeType = vehiculeType;
+    this.cin=CIN;
+    this.adresse=adresse;
   }
 }

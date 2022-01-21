@@ -1,21 +1,123 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <a class="btn btn-primary" style="align-content: center" >Add New Type</a>
-  <br>      <br>
-  <div class="row">
-    <div class="col-sm-2" style="margin-top: 2%" *ngFor="let type of altypes">
-      <div class="card" >
-        <img src="assets/icons/hamburger.png" id="icon">
-        <div class="card-body">
-          <h5 class="card-title">{{type.title}}</h5>
-          <p class="card-text" style="text-align: right"></p>
-        </div>
-        <div class="card-footer" style="text-align: center;" >
-          <a class="btn btn-primary" style="margin-right: 25%" >Edit</a>
-          <a class="btn btn-danger" >Delete</a>
-        </div>
+<!--edit category-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':typeEditPopupDisplayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Type - {{editedType.title}}</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="categoryname">Type Name</label>
+            <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"
+                   value="{{editedType.title}}" #editedtypeame>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary"
+                (click)="editedType.title=editedtypeame.value;
+                saveType(editedType);
+                closeEditItemPopup()">
+          Save
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closeEditItemPopup()">
+          Close
+        </button>
       </div>
     </div>
   </div>
+</div>
+<!--add category-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':typeAddPopupDisplayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Type</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="categoryname">Type Name</label>
+            <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"
+                   placeholder="Add a type name..." #newtypename>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" (click)="addType(newtypename.value);
+        newtypename.value='';
+        closeAddItemPopup();
+" class="btn btn-primary">
+          Save
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closeAddItemPopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--delete category-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':typeDeletePopupDisplayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Type - {{deletedType.title}}</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="deleteType(deletedType);
+        closeDeleteItemPopup();
+         ">
+          Delete
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closeDeleteItemPopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <a class="btn btn-sm btn-primary -pull-right" (click)="openAddItemPopup()"><i class="fa fa-plus-circle"></i>
+            Add New Type</a>
+        </div>
+        <div>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let type of alltypes;index as i">
+          <td>{{i + 1}}</td>
+          <td>{{type.title}}</td>
+          <td>
+            <ul class="action-list">
+              <li (click)="openEditItemPopup(type)"><a class="btn btn-primary"><i class="fa fa-pencil-alt" ></i></a>
+              </li> &nbsp;
+              <li (click)="openDeleteItemPopup(type)"><a class="btn btn-danger"><i class="fa fa-times"></i></a></li>&nbsp;
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

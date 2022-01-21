@@ -12,19 +12,22 @@ import {ApplicationListComponent} from "./application-list/application-list.comp
 const routes: Routes = [
   {
     path: "", component:PlaceModuleComponent,
+    children : [
+      {
+        path: "list", component:PlaceListComponent,
+      },
+      {
+        path: "applications", component:ApplicationListComponent,
+      },
+      {
+        path: "add", component:AddPlaceComponent,
+      },
+      {
+        path: "edit/:id", component:EditPlaceComponent,
+      },
+    ]
   },
-   {
-     path: "list", component:PlaceListComponent,
-   },
-  {
-    path: "applications", component:ApplicationListComponent,
-  },
-  {
-    path: "add", component:AddPlaceComponent,
-  },
-  {
-    path: "edit/:id", component:EditPlaceComponent,
-  },
+
 ]
 
 @NgModule({

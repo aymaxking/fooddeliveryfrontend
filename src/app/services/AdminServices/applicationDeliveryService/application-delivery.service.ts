@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {Category} from "../../../models/category";
-import {applicationDeliveryUrl, categoriesUrl, clientsUrl} from "../../../global-variables";
+import {applicationDeliveryUrl, categoriesUrl, clientsUrl, deliveriesUrl, placesUrl} from "../../../global-variables";
 import {HttpClient} from "@angular/common/http";
 import {ApplicationDelivery} from "../../../models/applicationDelivery";
 import {Client} from "../../../models/client";
@@ -45,4 +45,9 @@ export class ApplicationDeliveryService {
   saveApplication(application: ApplicationDelivery): Observable<any> {
     return this.http.put(applicationDeliveryUrl + `${application.id}`, application)
   }
+
+  finishApplication(application: ApplicationDelivery): Observable<any> {
+    return this.http.post(deliveriesUrl , application)
+  }
+
 }

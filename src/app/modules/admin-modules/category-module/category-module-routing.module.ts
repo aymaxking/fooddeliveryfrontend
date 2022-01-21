@@ -10,9 +10,6 @@ const routes: Routes = [
   {
     path: "", component:CategoryListComponent,
   },
-  // {
-  //   path: "list", component:CategoryListComponent,
-  // },
   {
     path: "add", component:AddCategoryComponent,
   },

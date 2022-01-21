@@ -3,6 +3,7 @@ import {Client} from "../../../../models/client";
 import {ClientService} from "../../../../services/AdminServices/clientService/client.service";
 import {ApplicationDelivery} from "../../../../models/applicationDelivery";
 import {ApplicationDeliveryService} from "../../../../services/AdminServices/applicationDeliveryService/application-delivery.service";
+import {Category} from "../../../../models/category";
 
 @Component({
   selector: 'app-applications-list',
@@ -13,12 +14,17 @@ export class ApplicationsListComponent implements OnInit {
 
   // @ts-ignore
   allaplications: ApplicationDelivery[];
+  editedapplication:ApplicationDelivery=Object();
   totalElements: any;
   size=8;
   t:any;
   currentpage=1
   maxpages=0;
   name="";
+  applicationAcceptPopupDisplayStyle = "none";
+  applicationRefusePopupDisplayStyle = "none";
+  applicationFinishPopupDisplayStyle = "none";
+
   constructor(private applicationDeliveryService:ApplicationDeliveryService) { }
 
   ngOnInit(): void {
@@ -46,6 +52,57 @@ export class ApplicationsListComponent implements OnInit {
       })
       this.currentpage=p;
     }
+  }
+
+  openAcceptItemPopup(edited: ApplicationDelivery) {
+    this.applicationAcceptPopupDisplayStyle = "block";
+    this.editedapplication = edited;
+  }
+
+  closeAcceptItemPopup() {
+    this.applicationAcceptPopupDisplayStyle = "none";
+  }
+
+  openRefuseItemPopup(edited: ApplicationDelivery) {
+    this.applicationRefusePopupDisplayStyle = "block";
+    this.editedapplication = edited;
+  }
+
+  closeRefuseItemPopup() {
+    this.applicationRefusePopupDisplayStyle = "none";
+  }
+
+  openFinishItemPopup(edited: ApplicationDelivery) {
+    this.applicationFinishPopupDisplayStyle = "block";
+    this.editedapplication = edited;
+  }
+
+  closeFinishItemPopup() {
+    this.applicationFinishPopupDisplayStyle = "none";
+  }
+
+  valide() {
+    this.editedapplication.etat = "Accepted";
+    this.applicationDeliveryService.saveApplication(this.editedapplication).subscribe(
+      value => this.getData(0)
+    )
+  }
+
+  finish() {
+    this.editedapplication.etat = "Validated";
+    this.applicationDeliveryService.saveApplication(this.editedapplication).subscribe(
+      value => this.getData(0)
+    )
+    this.applicationDeliveryService.finishApplication(this.editedapplication).subscribe(
+      value => console.log(value)
+    )
+  }
+
+  refuse() {
+    this.editedapplication.etat = "Refused";
+    this.applicationDeliveryService.saveApplication(this.editedapplication).subscribe(
+      value => this.getData(0)
+    )
   }
 
 }

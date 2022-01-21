@@ -13,12 +13,18 @@ export class ApplicationListComponent implements OnInit {
 
 // @ts-ignore
   allaplications: ApplicationPlace[];
+  editedapplication:ApplicationPlace=Object();
   totalElements: any;
   size=8;
   t:any;
   currentpage=1
   maxpages=0;
   name="";
+  applicationAcceptPopupDisplayStyle = "none";
+  applicationRefusePopupDisplayStyle = "none";
+  applicationFinishPopupDisplayStyle = "none";
+
+
   constructor(private applicationPlaceService:ApplicationPlaceService) { }
 
   ngOnInit(): void {
@@ -48,4 +54,53 @@ export class ApplicationListComponent implements OnInit {
     }
   }
 
+
+  openAcceptItemPopup(edited: ApplicationPlace) {
+    this.applicationAcceptPopupDisplayStyle = "block";
+    this.editedapplication = edited;
+  }
+
+  closeAcceptItemPopup() {
+    this.applicationAcceptPopupDisplayStyle = "none";
+  }
+
+  openRefuseItemPopup(edited: ApplicationPlace) {
+    this.applicationRefusePopupDisplayStyle = "block";
+    this.editedapplication = edited;
+  }
+
+  closeRefuseItemPopup() {
+    this.applicationRefusePopupDisplayStyle = "none";
+  }
+  openFinishItemPopup(edited: ApplicationPlace) {
+    this.applicationFinishPopupDisplayStyle = "block";
+    this.editedapplication = edited;
+  }
+
+  closeFinishItemPopup() {
+    this.applicationFinishPopupDisplayStyle = "none";
+  }
+  valide() {
+    this.editedapplication.etat = "Accepted";
+    this.applicationPlaceService.saveApplication(this.editedapplication).subscribe(
+      value => this.getData(0)
+    )
+  }
+
+  finish() {
+    this.editedapplication.etat = "Validated";
+    this.applicationPlaceService.saveApplication(this.editedapplication).subscribe(
+      value => this.getData(0)
+    )
+    this.applicationPlaceService.finishApplication(this.editedapplication).subscribe(
+      value => console.log(value)
+    )
+  }
+
+  refuse() {
+    this.editedapplication.etat = "Refused";
+    this.applicationPlaceService.saveApplication(this.editedapplication).subscribe(
+      value => this.getData(0)
+    )
+  }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApplicationDelivery} from "../../../models/applicationDelivery";
-import {applicationDeliveryUrl, applicationPlaceUrl} from "../../../global-variables";
+import {applicationDeliveryUrl, applicationPlaceUrl, placesUrl} from "../../../global-variables";
 import {ApplicationPlace} from "../../../models/applicationPlace";
 
 @Injectable({
@@ -42,5 +42,8 @@ export class ApplicationPlaceService {
 
   saveApplication(application: ApplicationPlace): Observable<any> {
     return this.http.put(applicationPlaceUrl + `${application.id}`, application)
+  }
+  finishApplication(application: ApplicationPlace): Observable<any> {
+    return this.http.post(placesUrl , application)
   }
 }

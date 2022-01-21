@@ -74,21 +74,21 @@ export class CategoryListComponent implements OnInit {
 
   addCategory(title: string) {
       this.categoryService.addCategory(new Category(title)).subscribe(
-        value => console.log(value)
+        value => this.getData(0)
       )
   }
 
 
   saveCategory(category: Category) {
     this.categoryService.saveCategory(category).subscribe(
-      value => console.log(value)
+      value => this.getData(0)
     )
   }
 
   deleteCategory(cat : Category) {
       // @ts-ignore
       this.categoryService.deleteCategory(cat.id.toString()).subscribe(
-        value => console.log(value)
+        value => this.getData(0)
       )
   }
 

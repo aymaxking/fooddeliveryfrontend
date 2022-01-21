@@ -1,0 +1,211 @@
+.panel{
+  font-family: 'Raleway', sans-serif;
+  padding: 0;
+  border: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+.panel .panel-heading{
+  background: #535353;
+  padding: 15px;
+  border-radius: 0;
+}
+.panel .panel-heading .btn{
+  color: #fff;
+  background-color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-heading .btn:hover{ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+.panel .panel-heading .form-horizontal .form-group{ margin: 0; }
+.panel .panel-heading .form-horizontal label{
+  color: #fff;
+  margin-right: 10px;
+}
+.panel .panel-heading .form-horizontal .form-control{
+  display: inline-block;
+  width: 80px;
+  border: none;
+  border-radius: 0;
+}
+.panel .panel-heading .form-horizontal .form-control:focus{
+  box-shadow: none;
+  border: none;
+}
+.panel .panel-body{
+  padding: 0;
+  border-radius: 0;
+}
+.panel .panel-body .table thead tr th{
+  color: #fff;
+  background: #8D8D8D;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 12px;
+  border-bottom: none;
+  text-align: center;
+}
+/*.panel .panel-body .table thead tr th:nth-of-type(1){ width: 120px; }*/
+/*.panel .panel-body .table thead tr th:nth-of-type(3){ width: 50%; }*/
+.panel .panel-body .table tbody tr td{
+  color: #555;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px;
+  vertical-align: middle;
+  border-color: #e7e7e7;
+  text-align: center;
+}
+.panel .panel-body .table tbody tr:nth-child(odd) td{ background: #f5f5f5; }
+.panel .panel-body .table tbody .action-list{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.panel .panel-body .table tbody .action-list li{ display: inline-block; }
+.panel .panel-body .table tbody .action-list li a{
+  color: #fff;
+  font-size: 13px;
+  line-height: 28px;
+  height: 28px;
+  width: 33px;
+  padding: 0;
+  border-radius: 0;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-body .table tbody .action-list li a:hover{ box-shadow: 0 0 5px #ddd; }
+.panel .panel-footer{
+  color: #fff;
+  background: #535353;
+  font-size: 16px;
+  line-height: 33px;
+  padding: 25px 15px;
+  border-radius: 0;
+}
+.pagination{ margin: 0; }
+.pagination li a{
+  color: #fff;
+  background-color: rgba(0,0,0,0.3);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 2px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li.active a{
+  color: #fff;
+  background-color: #000;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+body {
+  background-image: linear-gradient(to right top, #D91B23, #124FEB);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.search {
+  background-color: #fff;
+  padding: 4px;
+  border-radius: 5px
+}
+
+.search-1 {
+  position: relative;
+  width: 100%
+}
+
+.search-1 input {
+  height: 45px;
+  border: none;
+  width: 100%;
+  padding-left: 34px;
+  padding-right: 10px;
+  border-right: 2px solid #eee
+}
+
+.search-1 input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: none
+}
+
+.search-1 i {
+  position: absolute;
+  top: 12px;
+  left: 5px;
+  font-size: 24px;
+  color: #eee
+}
+
+::placeholder {
+  color: #eee;
+  opacity: 1
+}
+
+.search-2 {
+  position: relative;
+  width: 100%
+}
+
+.search-2 input {
+  height: 45px;
+  border: none;
+  width: 100%;
+  padding-left: 18px;
+  padding-right: 100px
+}
+
+.search-2 input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: none
+}
+
+.search-2 i {
+  position: absolute;
+  top: 12px;
+  left: -10px;
+  font-size: 24px;
+  color: #eee
+}
+
+.search-2 button {
+  position: absolute;
+  right: 1px;
+  top: 0px;
+  border: none;
+  height: 45px;
+  background-color: red;
+  color: #fff;
+  width: 90px;
+  border-radius: 4px
+}
+
+@media (max-width:800px) {
+  .search-1 input {
+    border-right: none;
+    border-bottom: 1px solid #eee
+  }
+
+  .search-2 i {
+    left: 4px
+  }
+
+  .search-2 input {
+    padding-left: 34px
+  }
+
+  .search-2 button {
+    height: 37px;
+    top: 5px
+  }
+}

@@ -12,10 +12,10 @@ import {ApplicationsListComponent} from "./applications-list/applications-list.c
 const routes: Routes = [
   {
     path: "", component:DeliveryModuleComponent,
-  },
+    children:[
   {
-     path: "list", component:DeliveryListComponent,
-   },
+    path: "list", component:DeliveryListComponent,
+  },
   {
     path: "applications", component:ApplicationsListComponent,
   },
@@ -24,6 +24,8 @@ const routes: Routes = [
   },
   {
     path: "edit/:id", component:EditDeliveryComponent,
+  },
+  ]
   },
 ]
 
