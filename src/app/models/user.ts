@@ -1,15 +1,20 @@
 import {Role} from "./role";
 
 export class User  {
-   id:number;
+   id?:number;
    username:string;
    password:string;
-   roles:Role[];
+   role?:string
 
-   constructor(id:number,username:string,password:string,roles:Role[]) {
-     this.id=id;
+
+   constructor(username:string,password:string,id?:number,role?:string) {
+     if (id != undefined) {
+       this.id = id;
+     }
      this.username=username;
      this.password=password;
-     this.roles=roles;
+     if (role != undefined) {
+       this.role = role;
+     }
    }
 }

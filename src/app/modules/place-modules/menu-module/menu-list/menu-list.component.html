@@ -1,1 +1,218 @@
-<p>menu-list works!</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div class="container">
+  <div class="row">
+
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':categoryaPopupDisplayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add New Category</h4>
+          </div>
+          <div class="modal-body">
+            <form >
+              <div class="form-group">
+                <label for="title">Category Name</label>
+                <input type="text" class="form-control" id="title"  name="title" aria-describedby="emailHelp"  placeholder="Enter the name of the category" #newcategoryname>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="addCategory(newcategoryname.value);
+            newcategoryname.value='';
+closeCategoryPopup();">
+              Save
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="closeCategoryPopup();
+            newcategoryname.value='';
+">
+              Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':itemPopupDisplayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add New Item</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="categoryname">Item Name</label>
+                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp" placeholder="Enter the name of the item" #title>
+              </div>
+              <div class="form-group">
+                <label for="categoryprice">Item Price</label>
+                <input type="email" class="form-control" id="categoryprice" aria-describedby="emailHelp" placeholder="Enter the price of the item" #price>
+              </div>
+              <div class="form-group">
+                <label for="img">Image</label><br>
+                <span style="color:red;" *ngIf="message">{{message}}</span>
+                <input #file type="file" accept='image/*' (change)="preview(file.files)"  id="img" ngModel/>
+                <img [src]="imgURL" height="200" *ngIf="imgURL">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="addItem(title.value,+price.value,'null');
+            title.value='';price.value='';
+closeItemPopup()">
+              Save
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="closeItemPopup();
+            title.value='';price.value='';
+">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':itemEditPopupDisplayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Item - {{editedSubMenu.title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="categoryname">Item Name</label>
+                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"  value="{{editedSubMenu.title}}" #newname>
+              </div>
+              <div class="form-group">
+                <label for="categoryname">Item Price</label>
+                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp" value="{{editedSubMenu.price}}" #newprice>
+              </div>
+              <div class="form-group">
+                <label for="img">Image</label><br>
+                <span style="color:red;" *ngIf="message">{{message}}</span>
+                <input #file type="file" accept='image/*' (change)="preview(file.files)"  id="img" ngModel/>
+                <img [src]="imgURL" height="200" *ngIf="imgURL">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="editedSubMenu.title=newname.value;
+            editedSubMenu.price=+newprice.value;
+            editItem(editedSubMenu);
+closeEditItemPopup()">
+              Save
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="closeEditItemPopup()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':itemEditCategoryPopupDisplayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Category - {{editedCategory.title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="categoryname">Category Name</label>
+                <input type="email" class="form-control" aria-describedby="emailHelp"  value="{{editedCategory.title}}" #editedcategoryname>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="editedCategory.title=editedcategoryname.value;
+            editCategory();
+closeEditCategoryPopup()">
+              Save
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="closeEditCategoryPopup()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':itemDeletePopupDisplayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Delete Item - {{deletedSubMenu.title}}</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="deleteItem(deletedSubMenu);
+            closeDeleteItemPopup();
+">
+              Delete
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="closeDeleteItemPopup()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':itemDeleteCategoryPopupDisplayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Delete Category - {{deletedCategory.title}}</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="deleteCategory(deletedCategory);
+            closeDeleteCategoryPopup();
+">
+              Delete
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="closeDeleteCategoryPopup()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn btn-primary"  style="width: 15%;" (click)="openCategoryPopup()">Add Category</a>
+    <div  style="margin-top: 2%"  *ngFor="let menu of place.menus">
+      <h1 style="text-align:center;">
+        {{menu.title}}
+      </h1><br>
+      <a class="btn btn-success" style="align-content: center" (click)="newitemcategoryid=menu.id.toString();
+      openItemPopup();">Add Item</a>&nbsp;
+      <a class="btn btn-primary" style="align-content: center" (click)="openEditCategoryPopup(menu);">Edit</a>&nbsp;
+      <a class="btn btn-danger" style="align-content: center" (click)="openDeleteCategoryPopup(menu);">Delete</a>
+      <br>      <br>
+      <div class="row">
+        <div class="col-sm-4" style="margin-top: 2%" *ngFor="let submenu of menu.subMenus">
+          <div class="card" >
+            <img src="assets/img/burger.jpg"  width="100%" >
+            <div class="card-body">
+              <h5 class="card-title">{{submenu.title}}</h5>
+              <p class="card-text" style="text-align: right">{{submenu.price}} DH</p>
+            </div>
+            <div class="card-footer" style="text-align: center;" >
+              <a class="btn btn-primary" style="margin-right: 25%" (click)="openEditItemPopup(submenu)">Edit</a>
+              <a class="btn btn-primary" (click)="openDeleteItemPopup(submenu)">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

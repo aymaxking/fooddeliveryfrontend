@@ -7,8 +7,8 @@ export class Client extends User{
   cin:string;
   home_adresse:string;
 
-  constructor(id:number,username:string,password:string,roles:Role[],name:string,birthday:string,cin:string,home_adresse:string) {
-    super(id,username,password,roles);
+  constructor(username:string,password:string,id:number,role:string,name:string,birthday:string,cin:string,home_adresse:string) {
+    super(username,password,id,role);
     this.name=name;
     this.birthday=birthday;
     this.cin=cin;

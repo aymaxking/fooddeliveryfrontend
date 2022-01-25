@@ -11,8 +11,8 @@ export class Place extends User{
   menus:Menu[];
 
 
-  constructor(id:number,username:string,password:string,roles:Role[],title:string,img:string,description:string,locations:Location[],menus:Menu[]) {
-    super(id,username,password,roles);
+  constructor(username:string,password:string,id:number,role:string,title:string,img:string,description:string,locations:Location[],menus:Menu[]) {
+    super(username,password,id,role);
     this.title=title;
     this.img=img;
     this.description=description;

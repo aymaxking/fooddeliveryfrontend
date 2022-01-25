@@ -8,8 +8,8 @@ export class Delivery extends User{
   adresse:string;
   start_date:string;
 
-  constructor(id:number,username:string,password:string,roles:Role[],name:string,birthday:string,cin:string,adresse:string,start_date:string) {
-    super(id,username,password,roles);
+  constructor(username:string,password:string,id:number,role:string,name:string,birthday:string,cin:string,adresse:string,start_date:string) {
+    super(username,password,id,role);
     this.name=name;
     this.birthday=birthday;
     this.cin=cin;

@@ -3,6 +3,7 @@ import {CategoryService} from "../../../../services/AdminServices/categoryServic
 import {ApplicationPlaceService} from "../../../../services/AdminServices/applicationPlaceService/application-place.service";
 import {Category} from "../../../../models/category";
 import {ApplicationPlace} from "../../../../models/applicationPlace";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-apply-place',
@@ -13,7 +14,7 @@ export class ApplyPlaceComponent implements OnInit {
 
   application:ApplicationPlace = Object();
 
-  constructor(private applicationPlaceService: ApplicationPlaceService) { }
+  constructor(private applicationPlaceService: ApplicationPlaceService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,7 @@ export class ApplyPlaceComponent implements OnInit {
     this.application.etat = "Processing";
     this.application.date = new Date().toLocaleDateString();
     this.applicationPlaceService.addApplication(this.application).subscribe(
-      value => console.log(value)
+      value => this.route.navigate([''])
     )
   }
 

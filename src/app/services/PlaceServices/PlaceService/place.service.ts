@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Place} from "../../../models/place";
-import {placesUrl} from "../../../global-variables";
+import {menusUrl, placesUrl, submenusUrl} from "../../../global-variables";
 import {Menu} from "../../../models/menu";
 import {SubMenu} from "../../../models/submenu";
 import {Location} from "../../../models/location";
@@ -11,6 +11,9 @@ import {Location} from "../../../models/location";
   providedIn: 'root'
 })
 export class PlaceService {
+  // @ts-ignore
+  id:number = +localStorage.getItem("currentuser");
+
 
   constructor(private http: HttpClient) { }
 
@@ -19,17 +22,32 @@ export class PlaceService {
   }
 
   addCategory(menu: Menu): Observable<any> {
-    return this.http.put(placesUrl+`8/addmenu`, menu)
+    return this.http.put(placesUrl+`${this.id}/addmenu`, menu)
   }
 
-  addItem(subMenu: SubMenu): Observable<any> {
-    return this.http.put(placesUrl+`8/addsubmenu`, subMenu)
+  addItem(subMenu: SubMenu,idcategory:string): Observable<any> {
+    return this.http.put(placesUrl+`${this.id}/menus/${idcategory}/addsubmenu`, subMenu)
   }
 
   addLocation(location: Location): Observable<any> {
-    return this.http.put(placesUrl+`8/addlocation`, location)
+    return this.http.put(placesUrl+`${this.id}/addlocation`, location)
   }
 
+  editItem(subMenu:SubMenu){
+    return this.http.put(submenusUrl+`${subMenu.id}`,subMenu)
+  }
+
+  deleteItem(subMenu:SubMenu){
+    return this.http.delete(submenusUrl+`${subMenu.id}`)
+  }
+
+  editCategory(menu:Menu){
+    return this.http.put(menusUrl+`${menu.id}`,menu)
+  }
+
+  deleteCategory(menu:Menu){
+    return this.http.delete(menusUrl+`${menu.id}`)
+  }
 
 savePlace(place: Place): Observable<any> {
     return this.http.put(placesUrl+`${place.id}`, place)

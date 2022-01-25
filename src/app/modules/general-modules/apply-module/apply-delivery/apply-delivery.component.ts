@@ -3,6 +3,7 @@ import {ApplicationPlaceService} from "../../../../services/AdminServices/applic
 import {ApplicationDeliveryService} from "../../../../services/AdminServices/applicationDeliveryService/application-delivery.service";
 import {ApplicationPlace} from "../../../../models/applicationPlace";
 import {ApplicationDelivery} from "../../../../models/applicationDelivery";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-apply-delivery',
@@ -13,7 +14,7 @@ export class ApplyDeliveryComponent implements OnInit {
   application:ApplicationDelivery = Object();
 
 
-  constructor(private applicationDeliveryService: ApplicationDeliveryService) { }
+  constructor(private applicationDeliveryService: ApplicationDeliveryService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +24,9 @@ export class ApplyDeliveryComponent implements OnInit {
     this.application.date = new Date().toLocaleDateString();
     console.log(this.application)
     this.applicationDeliveryService.addApplication(this.application).subscribe(
-      value => console.log(value)
-    )
+      value => this.route.navigate(['']) // navigate to other page
+
+  )
   }
 
 
