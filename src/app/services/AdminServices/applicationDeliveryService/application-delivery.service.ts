@@ -50,6 +50,11 @@ export class ApplicationDeliveryService {
     return this.http.put(applicationDeliveryUrl + type, application)
   }
 
+  showcontract(application: ApplicationDelivery): Observable<any> {
+    // @ts-ignore
+    return this.http.get(applicationDeliveryUrl +'generateContract', application)
+  }
+
   finishApplication(application: ApplicationDelivery): Observable<any> {
     return this.http.post(deliveriesUrl , application)
   }

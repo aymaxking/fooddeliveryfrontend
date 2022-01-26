@@ -115,7 +115,7 @@
               <li *ngIf="application.etat=='Processing'" (click)="openAcceptItemPopup(application)"><a class="btn btn-sm btn-success"><i class="fa fa-check"></i></a></li>&nbsp;
               <li *ngIf="application.etat=='Processing'"  (click)="openRefuseItemPopup(application)"><a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></li>
               <li *ngIf="application.etat=='Accepted'" (click)="openFinishItemPopup(application)" ><a class="btn btn-sm btn-success"><i class="fa fa-check"></i></a></li>&nbsp;
-              <li *ngIf="application.etat=='Accepted'"  ><a class="btn btn-sm btn-dark"><i class="fa fa-print"></i></a></li>
+              <li *ngIf="application.etat=='Accepted'"(click)="openContract(application)"  ><a class="btn btn-sm btn-dark"><i class="fa fa-print"></i></a></li>
             </ul>
           </td>
         </tr>
