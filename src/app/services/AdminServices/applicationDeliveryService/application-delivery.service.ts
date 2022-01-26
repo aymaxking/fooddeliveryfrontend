@@ -46,6 +46,10 @@ export class ApplicationDeliveryService {
     return this.http.put(applicationDeliveryUrl + `${application.id}`, application)
   }
 
+  sendemail(application: ApplicationDelivery,type : String): Observable<any> {
+    return this.http.put(applicationDeliveryUrl + type, application)
+  }
+
   finishApplication(application: ApplicationDelivery): Observable<any> {
     return this.http.post(deliveriesUrl , application)
   }

@@ -40,6 +40,10 @@ export class ApplicationPlaceService {
     return this.http.post<ApplicationPlace>(applicationPlaceUrl, application)
   }
 
+  sendemail(application: ApplicationPlace,type : String): Observable<any> {
+    return this.http.put(applicationPlaceUrl + type, application)
+  }
+
   saveApplication(application: ApplicationPlace): Observable<any> {
     return this.http.put(applicationPlaceUrl + `${application.id}`, application)
   }

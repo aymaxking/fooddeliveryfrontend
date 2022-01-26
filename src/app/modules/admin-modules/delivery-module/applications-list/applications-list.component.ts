@@ -83,6 +83,9 @@ export class ApplicationsListComponent implements OnInit {
 
   valide() {
     this.editedapplication.etat = "Accepted";
+    this.applicationDeliveryService.sendemail(this.editedapplication,"accepted").subscribe(
+      value => console.log()
+    )
     this.applicationDeliveryService.saveApplication(this.editedapplication).subscribe(
       value => this.getData(0)
     )
@@ -90,6 +93,9 @@ export class ApplicationsListComponent implements OnInit {
 
   finish() {
     this.editedapplication.etat = "Validated";
+    this.applicationDeliveryService.sendemail(this.editedapplication,"validated").subscribe(
+      value => console.log()
+    )
     this.applicationDeliveryService.saveApplication(this.editedapplication).subscribe(
       value => this.getData(0)
     )
@@ -100,6 +106,9 @@ export class ApplicationsListComponent implements OnInit {
 
   refuse() {
     this.editedapplication.etat = "Refused";
+    this.applicationDeliveryService.sendemail(this.editedapplication,"refused").subscribe(
+      value => console.log()
+    )
     this.applicationDeliveryService.saveApplication(this.editedapplication).subscribe(
       value => this.getData(0)
     )
