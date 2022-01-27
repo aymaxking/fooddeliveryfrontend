@@ -80,6 +80,10 @@ export class ApplicationListComponent implements OnInit {
   closeFinishItemPopup() {
     this.applicationFinishPopupDisplayStyle = "none";
   }
+  openContract(edited: ApplicationPlace) {
+    this.editedapplication = edited;
+    this.applicationPlaceService.showcontract(this.editedapplication);
+  }
   valide() {
     this.editedapplication.etat = "Accepted";
     this.applicationPlaceService.sendemail(this.editedapplication,"accepted").subscribe(
