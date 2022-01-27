@@ -5,6 +5,11 @@ import {applicationDeliveryUrl, categoriesUrl, clientsUrl, deliveriesUrl, places
 import {HttpClient} from "@angular/common/http";
 import {ApplicationDelivery} from "../../../models/applicationDelivery";
 import {Client} from "../../../models/client";
+// @ts-ignore
+import pdfMake from "pdfmake/build/pdfmake";
+// @ts-ignore
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable({
   providedIn: 'root'
@@ -50,9 +55,26 @@ export class ApplicationDeliveryService {
     return this.http.put(applicationDeliveryUrl + type, application)
   }
 
-  showcontract(application: ApplicationDelivery): Observable<any> {
-    // @ts-ignore
-    return this.http.get(applicationDeliveryUrl +'generateContract', application)
+  showcontract(application: ApplicationDelivery): void {
+    let docDefinition = {
+      header: {text:'Contract',style:'header'},
+      content: [
+        { text: 'adzadazdazd zdadaz to '+application.name+' from dadadad', style: 'anotherStyle' },
+      ],
+
+      styles: {
+        header: {
+          fontSize: 22,
+          bold: true,
+        },
+        anotherStyle: {
+          italics: true,
+          alignment: 'right'
+        }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).open();
   }
 
   finishApplication(application: ApplicationDelivery): Observable<any> {

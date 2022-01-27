@@ -79,9 +79,7 @@ export class ApplicationsListComponent implements OnInit {
 
   openContract(edited: ApplicationDelivery) {
     this.editedapplication = edited;
-    this.applicationDeliveryService.showcontract(this.editedapplication).subscribe(
-      value => console.log(value)
-    )
+    this.applicationDeliveryService.showcontract(this.editedapplication);
   }
 
   closeFinishItemPopup() {
