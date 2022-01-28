@@ -200,7 +200,7 @@ closeEditCategoryPopup()">
       <div class="row">
         <div class="col-sm-4" style="margin-top: 2%" *ngFor="let submenu of menu.subMenus">
           <div class="card" >
-            <img src="assets/img/burger.jpg"  width="100%" >
+            <img id="myimage" [src]='getImage(submenu.img)'  width="100%" >
             <div class="card-body">
               <h5 class="card-title">{{submenu.title}}</h5>
               <p class="card-text" style="text-align: right">{{submenu.price}} DH</p>

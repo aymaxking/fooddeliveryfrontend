@@ -35,6 +35,8 @@ export class MenuListComponent implements OnInit {
   id:number = +localStorage.getItem("currentuser");
 
 
+
+
   constructor(private placeService: PlaceService,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -159,8 +161,10 @@ export class MenuListComponent implements OnInit {
   }
 
   getImage(image:any) {
-    alert(JSON.stringify(image));
-    let objectURL = URL.createObjectURL(image);
-    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    var blob = new Blob([image], {
+      type: 'image/png'
+    });
+    console.log(blob)
+    return blob;
   }
 }
