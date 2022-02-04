@@ -56,7 +56,7 @@ export class MenuListComponent implements OnInit {
     )
   }
 
-  addItem(title: string, price:number, img:string) {
+  addItem(title: string, price:number, img:any) {
     this.placeService.addItem(new SubMenu(title,price,img),this.newitemcategoryid).subscribe(
       value => this.getPlace()
     )

@@ -26,6 +26,9 @@ export class ApplyPlaceComponent implements OnInit {
     this.applicationPlaceService.addApplication(this.application).subscribe(
       value => this.route.navigate([''])
     )
+    this.applicationPlaceService.sendemail(this.application,"received").subscribe(
+      value => console.log()
+    )
   }
 
 }

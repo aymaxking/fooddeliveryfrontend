@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApplicationPlaceService} from "../../../../services/AdminServices/applicationPlaceService/application-place.service";
 import {ApplicationDeliveryService} from "../../../../services/AdminServices/applicationDeliveryService/application-delivery.service";
 import {ApplicationPlace} from "../../../../models/applicationPlace";
@@ -11,10 +11,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./apply-delivery.component.css']
 })
 export class ApplyDeliveryComponent implements OnInit {
-  application:ApplicationDelivery = Object();
+  application: ApplicationDelivery = Object();
 
 
-  constructor(private applicationDeliveryService: ApplicationDeliveryService,private route:Router) { }
+  constructor(private applicationDeliveryService: ApplicationDeliveryService, private route: Router) {
+  }
 
   ngOnInit(): void {
   }
@@ -22,11 +23,12 @@ export class ApplyDeliveryComponent implements OnInit {
   addApplication() {
     this.application.etat = "Processing";
     this.application.date = new Date().toLocaleDateString();
-    console.log(this.application)
     this.applicationDeliveryService.addApplication(this.application).subscribe(
-      value => this.route.navigate(['']) // navigate to other page
-
-  )
+      value => this.route.navigate([''])
+    )
+    this.applicationDeliveryService.sendemail(this.application, "received").subscribe(
+      value => console.log()
+    )
   }
 
 

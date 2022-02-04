@@ -117,6 +117,7 @@ export class ApplicationPlaceService {
     return this.http.delete(applicationPlaceUrl + `${id}`)
   }
 
+
   addApplication(application: ApplicationPlace): Observable<any> {
     return this.http.post<ApplicationPlace>(applicationPlaceUrl, application)
   }

@@ -2,7 +2,7 @@ export class SubMenu{
   id?:number;
   title:string;
   price:number;
-  img:string;
+  img:any;
 
   constructor(title:string,price:number,img:string,id?:number) {
     this.id=id;
