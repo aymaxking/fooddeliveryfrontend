@@ -50,9 +50,9 @@ export class MenuListComponent implements OnInit {
     this.uploadedImage = event.target.files[0];
   }
 
-  getPlace(){
-    this.placeService.getPlace(this.id).subscribe((data: Place) => {
+  getPlace(){this.placeService.getPlace(this.id).subscribe((data: Place) => {
       this.place = data;
+      console.log(this.place)
     })
   }
 
@@ -71,9 +71,8 @@ export class MenuListComponent implements OnInit {
     // @ts-ignore
     reader.onload = (e) => {
       // @ts-ignore
-      this.placeService.addItem(new SubMenu(title,price,reader.result.toString().substring(23)),this.newitemcategoryid).subscribe(value => this.getPlace())
+      this.placeService.addItem(new SubMenu(title,price,reader.result.toString().replace(/^data:image\/[a-z]+;base64,/,'')),this.newitemcategoryid).subscribe(value => this.getPlace())
     }
-
   }
 
   editCategory() {
@@ -91,9 +90,19 @@ export class MenuListComponent implements OnInit {
   }
 
   editItem(editeditem:SubMenu) {
-    this.placeService.editItem(editeditem).subscribe(
-      value => this.getPlace()
-    )
+    // @ts-ignore
+    var reader = new FileReader();
+    var text : String;
+    reader.readAsDataURL(this.uploadedImage);
+    // @ts-ignore
+    reader.onload = (e) => {
+      // @ts-ignore
+      editeditem.img=reader.result.toString().substring(23);
+      this.placeService.editItem(editeditem).subscribe(
+        value => this.getPlace()
+      )
+    }
+
   }
 
 
@@ -152,9 +161,7 @@ export class MenuListComponent implements OnInit {
   closeItemPopup() {
     this.itemPopupDisplayStyle = "none";
   }
-   test(){
-    console.log("test done")
-   }
+
   preview(files:any) {
 
     var mimeType = this.uploadedImage .type;

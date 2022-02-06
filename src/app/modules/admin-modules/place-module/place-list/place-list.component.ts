@@ -47,6 +47,8 @@ export class PlaceListComponent implements OnInit {
       this.currentpage=p;
     }
   }
-
+  getImage(image:any) {
+    return  'data:image/jpeg;base64,' + image;
+  }
 
 }

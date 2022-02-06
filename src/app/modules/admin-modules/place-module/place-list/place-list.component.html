@@ -28,6 +28,7 @@
           <th></th>
           <th>Email</th>
           <th>Name</th>
+          <th>Logo</th>
           <th>Description</th>
           <th>Actions</th>
         </tr>
@@ -37,6 +38,7 @@
           <td>{{i + 1}}</td>
           <td>{{place.username}}</td>
           <td>{{place.title}}</td>
+          <td><img id="myimage" [src]="getImage(place.img)  " width="60%" height="120px"></td>
           <td>{{place.description}}</td>
           <td>
             <ul class="action-list">

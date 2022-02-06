@@ -4,17 +4,18 @@
 <div class="container">
   <div class="row">
 
-    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':categoryaPopupDisplayStyle}">
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':categoryaPopupDisplayStyle}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Add New Category</h4>
           </div>
           <div class="modal-body">
-            <form >
+            <form>
               <div class="form-group">
                 <label for="title">Category Name</label>
-                <input type="text" class="form-control" id="title"  name="title" aria-describedby="emailHelp"  placeholder="Enter the name of the category" #newcategoryname>
+                <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp"
+                       placeholder="Enter the name of the category" #newcategoryname>
               </div>
             </form>
           </div>
@@ -28,13 +29,14 @@ closeCategoryPopup();">
                     (click)="closeCategoryPopup();
             newcategoryname.value='';
 ">
-              Close</button>
+              Close
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':itemPopupDisplayStyle}">
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':itemPopupDisplayStyle}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -44,16 +46,18 @@ closeCategoryPopup();">
             <form>
               <div class="form-group">
                 <label for="categoryname">Item Name</label>
-                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp" placeholder="Enter the name of the item" #title>
+                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"
+                       placeholder="Enter the name of the item" #title>
               </div>
               <div class="form-group">
                 <label for="categoryprice">Item Price</label>
-                <input type="email" class="form-control" id="categoryprice" aria-describedby="emailHelp" placeholder="Enter the price of the item" #price>
+                <input type="email" class="form-control" id="categoryprice" aria-describedby="emailHelp"
+                       placeholder="Enter the price of the item" #price>
               </div>
               <div class="form-group">
-                <label for="img">Image</label><br>
+                <label >Image</label><br>
                 <span style="color:red;" *ngIf="message">{{message}}</span>
-                <input #newimage type="file" accept='image/*' (change)="onImageUpload($event);preview(newimage.files)"  >
+                <input #newimage type="file" accept='image/*' (change)="onImageUpload($event);preview(newimage.files)">
                 <br>
                 <img [src]="imgURL" height="200" *ngIf="imgURL" class="center">
               </div>
@@ -86,16 +90,19 @@ closeItemPopup()">
             <form>
               <div class="form-group">
                 <label for="categoryname">Item Name</label>
-                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"  value="{{editedSubMenu.title}}" #newname>
+                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"
+                       value="{{editedSubMenu.title}}" #newname>
               </div>
               <div class="form-group">
                 <label for="categoryname">Item Price</label>
-                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp" value="{{editedSubMenu.price}}" #newprice>
+                <input type="email" class="form-control" id="categoryname" aria-describedby="emailHelp"
+                       value="{{editedSubMenu.price}}" #newprice>
               </div>
               <div class="form-group">
                 <label>Image</label><br>
                 <span style="color:red;" *ngIf="message">{{message}}</span>
-                <input #neweditedimage type="file" accept='image/*' (change)="onImageUpload($event);previewedited(neweditedimage.files)"  >
+                <input #neweditedimage type="file" accept='image/*'
+                       (change)="onImageUpload($event);previewedited(neweditedimage.files)">
                 <br>
                 <img [src]="imgURLEdit" height="200" *ngIf="imgURLEdit" class="center">
               </div>
@@ -128,7 +135,8 @@ closeEditItemPopup()">
             <form>
               <div class="form-group">
                 <label for="categoryname">Category Name</label>
-                <input type="email" class="form-control" aria-describedby="emailHelp"  value="{{editedCategory.title}}" #editedcategoryname>
+                <input type="email" class="form-control" aria-describedby="emailHelp" value="{{editedCategory.title}}"
+                       #editedcategoryname>
               </div>
             </form>
           </div>
@@ -189,8 +197,8 @@ closeEditCategoryPopup()">
       </div>
     </div>
 
-    <a class="btn btn-primary"  style="width: 15%;" (click)="openCategoryPopup()">Add Category</a>
-    <div  style="margin-top: 2%"  *ngFor="let menu of place.menus">
+    <a class="btn btn-primary" style="width: 15%;" (click)="openCategoryPopup()">Add Category</a>
+    <div style="margin-top: 2%" *ngFor="let menu of place.menus">
       <h1 style="text-align:center;">
         {{menu.title}}
       </h1><br>
@@ -198,16 +206,16 @@ closeEditCategoryPopup()">
       openItemPopup();">Add Item</a>&nbsp;
       <a class="btn btn-primary" style="align-content: center" (click)="openEditCategoryPopup(menu);">Edit</a>&nbsp;
       <a class="btn btn-danger" style="align-content: center" (click)="openDeleteCategoryPopup(menu);">Delete</a>
-      <br>      <br>
+      <br> <br>
       <div class="row">
         <div class="col-sm-4" style="margin-top: 2%" *ngFor="let submenu of menu.subMenus">
-          <div class="card" >
-            <img id="myimage" [src]="getImage(submenu.img) || 'http://placehold.it/180' "  width="100%" height="260px" >
+          <div class="card">
+            <img id="myimage" [src]="getImage(submenu.img)  " width="100%" height="260px">
             <div class="card-body">
               <h5 class="card-title">{{submenu.title}}</h5>
               <p class="card-text" style="text-align: right">{{submenu.price}} DH</p>
             </div>
-            <div class="card-footer" style="text-align: center;" >
+            <div class="card-footer" style="text-align: center;">
               <a class="btn btn-primary" style="margin-right: 25%" (click)="openEditItemPopup(submenu)">Edit</a>
               <a class="btn btn-primary" (click)="openDeleteItemPopup(submenu)">Delete</a>
             </div>

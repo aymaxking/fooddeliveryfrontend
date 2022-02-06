@@ -34,6 +34,13 @@
               </div>
             </div>
             <div class="form-group row">
+              <label >Image</label><br>
+              <span style="color:red;" *ngIf="message">{{message}}</span>
+              <input #image type="file" accept='image/*' (change)="onImageUpload($event);preview(image.files)">
+              <br>
+              <img [src]="imgURL" height="300" *ngIf="imgURL" class="center">
+            </div>
+            <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label"></label>
               <div class="col-lg-12">
                 <input type="button" class="btn btn-primary" value="Apply" style="width: 100%"
