@@ -32,6 +32,8 @@ export class MenuListComponent implements OnInit {
   imgURL: any;
   public message: any;
   // @ts-ignore
+  uploadedImage:File;
+  // @ts-ignore
   id:number = +localStorage.getItem("currentuser");
 
 
@@ -41,6 +43,10 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlace()
+  }
+
+  public onImageUpload(event:any) {
+    this.uploadedImage = event.target.files[0];
   }
 
   getPlace(){
@@ -56,10 +62,16 @@ export class MenuListComponent implements OnInit {
     )
   }
 
-  addItem(title: string, price:number, img:any) {
-    this.placeService.addItem(new SubMenu(title,price,img),this.newitemcategoryid).subscribe(
-      value => this.getPlace()
-    )
+  addItem(title: string, price:number) {
+    // @ts-ignore
+    var reader = new FileReader();
+     var text : String;
+    reader.readAsDataURL(this.uploadedImage);
+    // @ts-ignore
+    reader.onload = (e) => {
+      this.placeService.addItem(new SubMenu(title,price,reader.result.substring(23)),this.newitemcategoryid).subscribe(value => this.getPlace())
+    }
+
   }
 
   editCategory() {
@@ -147,24 +159,17 @@ export class MenuListComponent implements OnInit {
       this.message = "Only images are supported.";
       return;
     }
-
+    // @ts-ignore
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
+    // @ts-ignore
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     }
   }
 
-  clearCategoryPopup(){
-
-  }
-
   getImage(image:any) {
-    var blob = new Blob([image], {
-      type: 'image/png'
-    });
-    console.log(blob)
-    return blob;
+    return  'data:image/jpeg;base64,' + image;
   }
 }

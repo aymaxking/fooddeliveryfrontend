@@ -11,9 +11,7 @@ export class AdminModulesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
-
+    
   }
 
 }
