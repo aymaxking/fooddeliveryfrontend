@@ -27,6 +27,7 @@
           <th></th>
           <th>Email</th>
           <th>Name</th>
+          <th>Picture</th>
           <th>Birthday</th>
           <th>CIN</th>
           <th>Adresse</th>
@@ -38,6 +39,7 @@
           <td>{{i + 1}}</td>
           <td>{{delivery.username}}</td>
           <td>{{delivery.name}}</td>
+          <td><img id="myimage" [src]="getImage(delivery.img)  " width="100%" height="80px"></td>
           <td>{{delivery.birthday}}</td>
           <td>{{delivery.cin}}</td>
           <td>{{delivery.adresse}}</td>

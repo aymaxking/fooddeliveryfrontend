@@ -104,4 +104,7 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryDeletePopupDisplayStyle = "none";
   }
 
+  getImage(image:any) {
+    return  'data:image/jpeg;base64,' + image;
+  }
 }

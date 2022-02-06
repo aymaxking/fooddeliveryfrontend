@@ -92,6 +92,7 @@
           <th></th>
           <th>Name</th>
           <th>Email</th>
+          <th>Picture</th>
           <th>Number</th>
           <th>City</th>
           <th>Vehicule</th>
@@ -105,6 +106,7 @@
           <td>{{i + 1}}</td>
           <td>{{application.name}}</td>
           <td>{{application.email}}</td>
+          <td><img id="myimage" [src]="getImage(application.img)  " width="100%" height="80px"></td>
           <td>{{application.number}}</td>
           <td>{{application.city}}</td>
           <td>{{application.vehiculeType}}</td>

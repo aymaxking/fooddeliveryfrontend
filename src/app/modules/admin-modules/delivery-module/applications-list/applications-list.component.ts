@@ -118,5 +118,8 @@ export class ApplicationsListComponent implements OnInit {
       value => this.getData(0)
     )
   }
+  getImage(image:any) {
+    return  'data:image/jpeg;base64,' + image;
+  }
 
 }
