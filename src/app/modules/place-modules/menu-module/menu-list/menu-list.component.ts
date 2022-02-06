@@ -30,6 +30,7 @@ export class MenuListComponent implements OnInit {
   deletedCategory:Menu = Object();
   public imagePath : any ;
   imgURL: any;
+  imgURLEdit:any;
   public message: any;
   // @ts-ignore
   uploadedImage:File;
@@ -69,7 +70,8 @@ export class MenuListComponent implements OnInit {
     reader.readAsDataURL(this.uploadedImage);
     // @ts-ignore
     reader.onload = (e) => {
-      this.placeService.addItem(new SubMenu(title,price,reader.result.substring(23)),this.newitemcategoryid).subscribe(value => this.getPlace())
+      // @ts-ignore
+      this.placeService.addItem(new SubMenu(title,price,reader.result.toString().substring(23)),this.newitemcategoryid).subscribe(value => this.getPlace())
     }
 
   }
@@ -133,6 +135,7 @@ export class MenuListComponent implements OnInit {
   openEditItemPopup(edited:SubMenu){
     this.itemEditPopupDisplayStyle = "block";
     this.editedSubMenu=edited;
+    this.imgURLEdit=this.getImage(this.editedSubMenu.img)
   }
   closeEditItemPopup() {
     this.itemEditPopupDisplayStyle = "none";
@@ -149,14 +152,14 @@ export class MenuListComponent implements OnInit {
   closeItemPopup() {
     this.itemPopupDisplayStyle = "none";
   }
-
+   test(){
+    console.log("test done")
+   }
   preview(files:any) {
-    if (files.length === 0)
-      return;
 
-    var mimeType = files[0].type;
+    var mimeType = this.uploadedImage .type;
     if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
+      console.log("Not Image")
       return;
     }
     // @ts-ignore
@@ -166,6 +169,22 @@ export class MenuListComponent implements OnInit {
     // @ts-ignore
     reader.onload = (_event) => {
       this.imgURL = reader.result;
+    }
+  }
+  previewedited(files:any) {
+
+    var mimeType = this.uploadedImage .type;
+    if (mimeType.match(/image\/*/) == null) {
+      console.log("Not Image")
+      return;
+    }
+    // @ts-ignore
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    // @ts-ignore
+    reader.onload = (_event) => {
+      this.imgURLEdit = reader.result;
     }
   }
 
