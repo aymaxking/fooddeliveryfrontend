@@ -40,7 +40,7 @@ export class ApplicationPlaceService {
         {text:'Restaurant Management',style:'header', margin: [ 0, 0, 0, 0 ] },
         {text:'Service Agreement',style:'header', margin: [ 0, 0, 0, 20 ] },
         {text:'Parties',style:'header2', margin: [ 15, 0, 0, 20 ] },
-        {text:'This RESTAURANT MANAGEMENT SERVICE AGREEMENT dated '+application.date+' between FoodIn and '+application.name+' located at ...'
+        {text:'This RESTAURANT MANAGEMENT SERVICE AGREEMENT dated '+application.date+' between FoodIn and '+application.name+' located at '+application.location
           ,style:'body', margin: [ 0, 0, 0, 20 ] },
 
         {text:'Services Provided',style:'header2', margin: [ 15, 0, 0, 20 ] },

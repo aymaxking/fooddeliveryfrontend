@@ -5,7 +5,6 @@ import {Place} from "../../../models/place";
 import {menusUrl, placesUrl, submenusUrl} from "../../../global-variables";
 import {Menu} from "../../../models/menu";
 import {SubMenu} from "../../../models/submenu";
-import {Location} from "../../../models/location";
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +28,7 @@ export class PlaceService {
     return this.http.put(placesUrl+`${this.id}/menus/${idcategory}/addsubmenu`, subMenu)
   }
 
-  addLocation(location: Location): Observable<any> {
-    return this.http.put(placesUrl+`${this.id}/addlocation`, location)
-  }
+
 
   editItem(subMenu:SubMenu){
     return this.http.put(submenusUrl+`${subMenu.id}`,subMenu)

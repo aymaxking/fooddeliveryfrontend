@@ -4,7 +4,6 @@ import {CategoryService} from "../../../../services/AdminServices/categoryServic
 import {PlaceService} from "../../../../services/PlaceServices/PlaceService/place.service";
 import {Menu} from "../../../../models/menu";
 import {SubMenu} from "../../../../models/submenu";
-import {Location} from "../../../../models/location";
 import {Place} from "../../../../models/place";
 import {DomSanitizer} from "@angular/platform-browser";
 
@@ -108,11 +107,6 @@ export class MenuListComponent implements OnInit {
 
   deleteItem(deletedItem:SubMenu) {
     this.placeService.deleteItem(deletedItem).subscribe(
-      value => this.getPlace()
-    )
-  }
-  addLocation(location: string) {
-    this.placeService.addLocation(new Location(location)).subscribe(
       value => this.getPlace()
     )
   }
