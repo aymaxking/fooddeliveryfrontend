@@ -96,7 +96,7 @@ export class MenuListComponent implements OnInit {
     // @ts-ignore
     reader.onload = (e) => {
       // @ts-ignore
-      editeditem.img=reader.result.toString().substring(23);
+      editeditem.img=reader.result.toString().replace(/^data:image\/[a-z]+;base64,/,'');
       this.placeService.editItem(editeditem).subscribe(
         value => this.getPlace()
       )
