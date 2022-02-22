@@ -1,1 +1,101 @@
-<p>orders-list works!</p>
+
+<div class="container">
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':commandePopupDisplayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="align-content: center">Order Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-4" style="margin-top: 2%" *ngFor="let submenu of currentCommande.items">
+              <div class="card">
+                <img id="myimage" [src]="getImage(submenu.img)">
+                <div class="card-body" >
+                  <h5 class="card-title">{{submenu.title}}</h5>
+                  <p class="card-text" style="text-align: right">{{submenu.price}} DH</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopup();">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-heading">
+      <div class="row">
+        <div>
+          <br>
+          <div class="search">
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <div class="search-2"><i class='bx bxs-map'></i>
+                    <input type="text" placeholder="Email,Name,Cin search ..." #search>
+<!--                    <button *ngIf="name==''" (click)="name=search.value.toString();getData(0)">Search</button>-->
+<!--                    <button *ngIf="name!=''" (click)="name='';search.value='';getData(0)">Clear</button>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body table-responsive">
+      <table class="table center">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Client</th>
+          <th>Delivery</th>
+          <th>Date</th>
+          <th>Heure</th>
+          <th>Total</th>
+          <th>Etat</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of allorders;index as i;">
+          <td>{{i + 1}}</td>
+          <td>{{order.client.name}}</td>
+          <td>{{order.delivery.name}}</td>
+          <td>{{order.date}}</td>
+          <td>{{order.heure}}</td>
+          <td>{{order.total}} DH</td>
+          <td>{{order.etat}}</td>
+          <td>
+            <ul class="action-list">
+              <li (click)="openPopup(order)"><a class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
+              </li>&nbsp;
+
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" *ngIf="currentpage>0"
+                                     (click)="getData(currentpage-1)">Previous</a></li>
+            <li class="page-item" *ngFor="let i of totalElements" (click)="getData(i)"><a
+              class="page-link">{{i + 1}}</a></li>
+            <li class="page-item"><a class="page-link" *ngIf="currentpage<maxpages-1" (click)="getData(currentpage+1)">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

@@ -59,7 +59,7 @@ closeCategoryPopup();">
                 <span style="color:red;" *ngIf="message">{{message}}</span>
                 <input #newimage type="file" accept='image/*' (change)="onImageUpload($event);preview(newimage.files)">
                 <br>
-                <img [src]="imgURL" height="200" *ngIf="imgURL" class="center">
+                <img [src]="imgURL" style="width: fit-content;max-width: 100%" *ngIf="imgURL" class="center">
               </div>
             </form>
           </div>

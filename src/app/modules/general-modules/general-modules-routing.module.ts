@@ -9,10 +9,10 @@ const routes: Routes = [
     path: "",
     component:GeneralModulesComponent,
     children:[
-      {
-        path: "apply",
-        loadChildren: () => import ('./apply-module/apply-module.module').then(m => m.ApplyModuleModule),
-      },
+      // {
+      //   path: "apply",
+      //   loadChildren: () => import ('./apply-module/apply-module.module').then(m => m.ApplyModuleModule),
+      // },
     ]
   },
 ];

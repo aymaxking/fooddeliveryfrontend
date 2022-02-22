@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Menu} from "../../../models/menu";
+import {Commande} from "../../../models/commande";
 
 @Component({
   selector: 'app-orders-module',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders-module.component.css']
 })
 export class OrdersModuleComponent implements OnInit {
+
 
   constructor() { }
 
