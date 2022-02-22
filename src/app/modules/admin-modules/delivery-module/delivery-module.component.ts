@@ -11,7 +11,7 @@ export class DeliveryModuleComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    $("#menu-toggle").click(function(e) {
+    $("#menu-toggle2").click(function(e) {
       e.preventDefault();
       // @ts-ignore
       $("#wrapper").toggleClass("toggled");

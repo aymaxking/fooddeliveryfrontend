@@ -10,6 +10,12 @@ export class PlaceModuleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      // @ts-ignore
+      $("#wrapper").toggleClass("toggled");
+    });
   }
 
 }
