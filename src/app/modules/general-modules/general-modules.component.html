@@ -315,8 +315,8 @@
               <label>Image</label><br>
               <span style="color:red;" *ngIf="message">{{message}}</span>
               <input #image type="file" accept='image/*'  (change)="onImageUpload($event);preview(image.files)">
-              <br>
-              <img [src]="imgURL"style="width: fit-content;max-width: 100%" *ngIf="imgURL" class="center" >
+              <br><br>
+              <img [src]="imgURL" style="width: fit-content;max-width: 70%;max-height: 70%;padding-left: 30%" *ngIf="imgURL" class="center" >
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label"></label>
@@ -382,8 +382,8 @@
               <label >Image</label><br>
               <span style="color:red;" *ngIf="message2">{{message2}}</span>
               <input #image2 type="file" accept='image/*' (change)="onImageUpload2($event);preview2(image2.files)">
-              <br>
-              <img [src]="imgURL2" style="width: fit-content;max-width: 100%" *ngIf="imgURL2" class="center">
+              <br><br>
+              <img [src]="imgURL2" style="width: fit-content;max-width: 70%;max-height: 70%;padding-left: 30%" *ngIf="imgURL2" class="center">
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label"></label>
@@ -428,6 +428,8 @@
           </ul>
         </div>
         <div class="col-md-6 to-animate-2">
+          Grow with FoodIn! Our technology and user base can help you boost sales and unlock new opportunities!
+
           <h3>Contact Form</h3>
           <div class="form-group ">
             <label for="name" class="sr-only">Name</label>
