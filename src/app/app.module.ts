@@ -9,13 +9,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {ListFilterPipe} from "./pipes/listFilterPipe";
 import {CommonModule} from "@angular/common";
-import { LoginComponent } from './modules/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListFilterPipe,
-    LoginComponent
   ],
   imports: [
     CommonModule,

@@ -8,13 +8,15 @@ export class User  {
   img:any;
 
 
-  constructor(username:string,password:string,img:any,id?:number,role?:string) {
+  constructor(username:string,password:string,img?:any,id?:number,role?:string) {
      if (id != undefined) {
        this.id = id;
      }
      this.username=username;
      this.password=password;
-     this.img=img;
+    if (img != undefined) {
+      this.img = img;
+    }
      if (role != undefined) {
        this.role = role;
      }

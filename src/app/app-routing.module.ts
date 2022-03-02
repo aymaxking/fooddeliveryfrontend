@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./modules/login/login.component";
 
 const routes: Routes = [
   {
@@ -15,10 +14,6 @@ const routes: Routes = [
   {
     path: "place",
     loadChildren: () => import ('./modules/place-modules/place-modules.module').then(m => m.PlaceModulesModule),
-  },
-  {
-    path: "login",component:LoginComponent
-
   },
 ];
 
