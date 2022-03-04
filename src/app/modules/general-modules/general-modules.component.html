@@ -5,33 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>complete responsive food website design tutorial </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 </head>
 <body>
 <header>
-  <a href="#" class="logo"><i class="fas fa-utensils"></i>FoodIn</a>
+  <a class="logo"><i class="fas fa-utensils"></i>FoodIn</a>
   <div id="menu-bar" class="fas fa-bars"></div>
   <a class="login float-right" (click)="openLoginPopup()">Login</a>
 </header>
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':loginPopupDisplayStyle}">
   <div class="modal-dialog" role="document">
     <div class="modal-content clearfix">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeLoginPopup()"><span aria-hidden="true">×</span></button>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeLoginPopup()"><span
+        aria-hidden="true">×</span></button>
       <div class="modal-body">
         <h3 class="title">Log in to FoodIn</h3>
         <div class="form-group">
           <span class="input-icon"><i class="fa fa-user"></i></span>
-          <input type="email" class="form-control" placeholder="Email" #loginemail>
+          <input type="email" class="form-control" placeholder="Email" style="padding-left: 12%" #loginemail>
         </div>
         <div class="form-group">
           <span class="input-icon"><i class="fas fa-key"></i></span>
-          <input type="password" class="form-control" placeholder="Password" #loginpassword>
+          <input type="password" class="form-control" placeholder="Password" style="padding-left: 12%" #loginpassword>
         </div>
-        <a  class="forgot-pass">Forgot Password?</a>
+        <a class="forgot-pass">Forgot Password?</a>
+        <br><br>
         <button class="btn" (click)="login(loginemail.value.toString(),loginpassword.value.toString())">Login</button>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':riderPopupDisplayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content clearfix">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeRiderPopup()"><span
+        aria-hidden="true">×</span></button>
+      <div class="modal-body">
+        <h3 class="title">Apply dzdz</h3>
+        <form class="form" role="form" autocomplete="off">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Full Name" #name>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="email" placeholder="E-mail" #email>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Phone number" maxlength="13" value="+212" #phone>
+          </div>
+          <div class="form-group">
+            <select id="city" class="form-control" size="0" #city>
+              <option value="Rabat">Rabat</option>
+              <option value="Sale">Sale</option>
+              <option value="Fes">Fes</option>
+              <option value="Casablance">Casablanca</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select id="vehicule" class="form-control" size="0" #vehiculeType>
+              <option value="Moto">Moto</option>
+              <option value="Car">Car</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <span style="color:red;" *ngIf="message">{{message}}</span>
+            <label for="img" class="custom-file-upload">
+              <i class="fa fa-user"></i> Upload Image
+            </label>
+            <input #image type="file" style="display: none" id="img" accept='image/*'
+                   (change)="onImageUpload($event);preview(image.files)">
+            <br><br>
+            <img [src]="imgURL" style="width: fit-content;max-width: 70%;max-height: 70%;padding-left: 30%"
+                 *ngIf="imgURL" class="center">
+          </div>
+          <p (click)="
+              application.name=name.value;
+              application.email=email.value;
+              application.number=phone.value;
+              application.city=city.value;
+              application.vehiculeType=vehiculeType.value;
+              name.value='';email.value='';phone.value='';city.value='';vehiculeType.value='';
+              image.value='';
+              imgURL='';
+              addApplication();
+           "><a href="#" class="btn btn-primary btn-outline">Apply</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':partnerPopupDisplayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content clearfix">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="
+             name2.value='';email2.value='';phone2.value='+212';description2.value='';location2.value='';image2.value='';imgURL2='';closePartnerPopup();
+"><span aria-hidden="true">×</span></button>
+      <div class="modal-body">
+        <h3 class="title">Apply dzdz</h3>
+        <form class="form" role="form" autocomplete="off">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Full Name" #name2>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="email" placeholder="Email" #email2>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Phone number" maxlength="13" value="+212" #phone2>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="url" placeholder="Location" #location2>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="url" placeholder="Description" #description2>
+          </div>
+          <div class="form-group">
+            <span style="color:red;" *ngIf="message2">{{message2}}</span>
+            <label for="img2" class="custom-file-upload">
+              <i class="fa fa-user"></i> Upload Image
+            </label>
+            <input #image2 type="file" style="display: none" id="img2" accept='image/*'
+                   (change)="onImageUpload2($event);preview2(image2.files)">
+            <br><br>
+            <img [src]="imgURL2" style="width: fit-content;max-width: 70%;max-height: 70%;padding-left: 30%"
+                 *ngIf="imgURL2" class="center">
+          </div>
+          <p (click)="
+              application2.name=name2.value;
+              application2.email=email2.value;
+              application2.number=phone2.value;
+              application2.description=description2.value;
+              application2.location=location2.value;
+              name2.value='';email2.value='';phone2.value='+212';description2.value='';location2.value='';
+              image2.value='';
+              imgURL2='';
+              addApplication2();
+           "><a href="#" class="btn btn-primary btn-outline">Apply</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section class="home" id="home">
 
   <div class="content">
@@ -116,13 +235,13 @@
       <img src="assets/images/delivery.png" alt="">
       <h3>Become a rider</h3>
       <p>Be your own boss! Enjoy flexibility, freedom and competitive earnings by delivering with FoodIn</p>
-      <a [routerLink]="['rider']" target="_blank">Join us</a>
+      <a target="_blank" (click)="openRiderPopup()">Join us</a>
     </div>
     <div class="box">
       <img src="assets/images/partner.jpg" alt="">
       <h3>Become a partner</h3>
       <p>Grow with FoodIn! Our technology and user base can help you boost sales and nulock new opportunities!</p>
-      <a [routerLink]="['partner']" target="_blank">Join us</a>
+      <a (click)="openPartnerPopup()" target="_blank">Join us</a>
     </div>
 
   </section>

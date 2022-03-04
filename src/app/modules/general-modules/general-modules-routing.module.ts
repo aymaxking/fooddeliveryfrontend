@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {GeneralModulesComponent} from "./general-modules.component";
-import {ApplyPlaceComponent} from "./apply-module/apply-place/apply-place.component";
-import {ApplyDeliveryComponent} from "./apply-module/apply-delivery/apply-delivery.component";
 
 
 const routes: Routes = [
@@ -13,12 +11,6 @@ const routes: Routes = [
     children:[
 
     ]
-  },
-  {
-    path: "partner", component:ApplyPlaceComponent,
-  },
-  {
-    path: "rider", component:ApplyDeliveryComponent,
   },
 ];
 

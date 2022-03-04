@@ -101,14 +101,23 @@ body {
   font-size: 17px;
   height: 45px;
   width: 100%;
-  padding: 6px 0 6px 50px;
   margin: 0 auto;
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: grey;
+  border-width: 0 0 1px;
+  border-color: lightgray;
   box-shadow: none;
   outline: none;
+}
 
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.modal-body select{
+text-align: left;
 }
 
 .form-control::placeholder{
@@ -158,6 +167,14 @@ body {
   box-sizing: border-box;
   font-size: 18px;
 }
+
+/*.modal-dialog{*/
+/*  overflow-y: initial !important*/
+/*}*/
+/*.modal-body{*/
+/*  height: 80vh;*/
+/*  overflow-y: auto;*/
+/*}*/
 .modal-content .modal-body .btn:hover{
   color: #fff;
   letter-spacing: 2px;
@@ -226,11 +243,12 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  padding: 2rem 9%;
+  padding: 1rem 9%;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
 }
 
@@ -256,7 +274,7 @@ header .login {
   text-overflow: ellipsis;
   font-weight: 700;
   box-sizing: border-box;
-  font-size: 18px;
+  font-size: 14px;
   backdrop-filter: blur(10px);
 }
 
