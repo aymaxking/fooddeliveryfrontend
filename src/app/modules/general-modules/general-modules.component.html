@@ -33,6 +33,7 @@
           <span class="input-icon"><i class="fas fa-key"></i></span>
           <input type="password" class="form-control" placeholder="Password" style="padding-left: 12%" #loginpassword>
         </div>
+        <p style="color:red" *ngIf="loginerror" > Login Failed. Please try again. </p>
         <a class="forgot-pass">Forgot Password?</a>
         <br><br>
         <button class="btn" (click)="login(loginemail.value.toString(),loginpassword.value.toString())">Login</button>

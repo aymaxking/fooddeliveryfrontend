@@ -8,6 +8,8 @@ import {ApplicationPlace} from "../../models/applicationPlace";
 import {ApplicationPlaceService} from "../../services/AdminServices/applicationPlaceService/application-place.service";
 import {User} from "../../models/user";
 import {LoginService} from "../../services/login/login.service";
+// @ts-ignore
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 declare var jQuery: any;
 
@@ -33,6 +35,7 @@ export class GeneralModulesComponent implements OnInit {
   public message2: any;
   // @ts-ignore
   uploadedImage2:File;
+  loginerror=false
 
   constructor(private applicationDeliveryService: ApplicationDeliveryService,private applicationPlaceService: ApplicationPlaceService,private route: Router, private loginService: LoginService) {
   }
@@ -119,14 +122,21 @@ export class GeneralModulesComponent implements OnInit {
   }
 
   login(email: string, password: string) {
-    console.log("email:"+email+"/password:"+password)
+    console.log(email+" "+password)
     this.loginService.login(new User(email, password)).subscribe(
       (value: User) => {
-        console.log(value);
         // @ts-ignore
-        localStorage.setItem("currentuser", value.id.toString())
-        if (value.role == "place") this.route.navigate(['/place']);
-        else if (value.role == "admin") this.route.navigate(['/admin']);
+        if(value.role==undefined){
+         this.loginerror=true
+        }
+        else{
+          this.loginerror=false
+          // @ts-ignore
+          localStorage.setItem("currentuser", value.id.toString())
+          if (value.role == "place") this.route.navigate(['/place']);
+          else if (value.role == "admin") this.route.navigate(['/admin']);
+        }
+
       }
     )
   }
@@ -145,7 +155,10 @@ export class GeneralModulesComponent implements OnInit {
       // @ts-ignore
       this.application.img=reader.result.toString().replace(/^data:image\/[a-z]+;base64,/,'');
       this.applicationDeliveryService.addApplication(this.application).subscribe(
-        value => this.route.navigate([''])
+        value => {
+          this.closeRiderPopup()
+          Swal.fire('Congrats', 'Application sent successfully', 'success')
+        }
       )
     }
 
@@ -181,6 +194,7 @@ export class GeneralModulesComponent implements OnInit {
 
 
   addApplication2() {
+
     this.application2.etat = "Processing";
     this.application2.date = new Date().toLocaleDateString();
     // @ts-ignore
@@ -191,7 +205,10 @@ export class GeneralModulesComponent implements OnInit {
       // @ts-ignore
       this.application2.img=reader.result.toString().replace(/^data:image\/[a-z]+;base64,/,'');
       this.applicationPlaceService.addApplication(this.application2).subscribe(
-        value => this.closePartnerPopup()
+        value => {
+          this.closePartnerPopup()
+          Swal.fire('Congrats', 'Application sent successfully', 'success')
+        }
       )
     }
     this.applicationPlaceService.sendemail(this.application2,"received").subscribe(

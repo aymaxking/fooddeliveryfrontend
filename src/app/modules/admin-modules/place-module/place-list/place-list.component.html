@@ -31,7 +31,6 @@
           <th>Logo</th>
           <th>Location</th>
           <th>Description</th>
-          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -42,12 +41,6 @@
           <td><img id="myimage" [src]="getImage(place.img)  " width="30%" height="30%"></td>
           <td>{{place.location}}</td>
           <td>{{place.description}}</td>
-          <td>
-            <ul class="action-list">
-              <li><a class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
-              </li>&nbsp;
-            </ul>
-          </td>
         </tr>
         </tbody>
       </table>

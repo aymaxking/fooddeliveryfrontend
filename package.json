@@ -31,6 +31,7 @@
     "ngx-bootstrap": "^7.1.0",
     "pdfmake": "^0.2.4",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.14",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

@@ -1,2 +1,30 @@
-<place-navbar></place-navbar>
-<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>complete responsive food website design tutorial </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+</head>
+<body>
+<header>
+  <a  href="#" target="_blank" class="logo"><i class="fas fa-utensils"></i>FoodIn</a>
+  <div id="menu-bar" class="fas fa-bars"></div>
+  <a class="login float-right">LogOut</a>
+  <nav class="navbar" style=" padding: 0rem 15%;">
+    <a class="nav-link" routerLink="/place/menu" routerLinkActive="active">Menu</a>
+    <a class="nav-link" routerLink="/place/orders" routerLinkActive="active">Orders</a>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+</body>
+</html>
