@@ -28,10 +28,6 @@
           <th>Email</th>
           <th>Name</th>
           <th>Picture</th>
-          <th>Birthday</th>
-          <th>CIN</th>
-          <th>Adresse</th>
-          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -39,16 +35,7 @@
           <td>{{i + 1}}</td>
           <td>{{delivery.username}}</td>
           <td>{{delivery.name}}</td>
-          <td><img id="myimage" [src]="getImage(delivery.img)  " width="100%" height="80px"></td>
-          <td>{{delivery.birthday}}</td>
-          <td>{{delivery.cin}}</td>
-          <td>{{delivery.adresse}}</td>
-          <td>
-            <ul class="action-list">
-              <li routerLink="/admin/categories/details/{{delivery.id}}"><a class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
-              </li>&nbsp;
-            </ul>
-          </td>
+          <td><img id="myimage" [src]="getImage(delivery.img)  " width="70%" height="80px"></td>
         </tr>
         </tbody>
       </table>

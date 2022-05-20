@@ -96,14 +96,11 @@ export class ApplicationListComponent implements OnInit {
 
   finish() {
     this.editedapplication.etat = "Validated";
-    this.applicationPlaceService.sendemail(this.editedapplication,"validated").subscribe(
-      value => console.log()
-    )
     this.applicationPlaceService.saveApplication(this.editedapplication).subscribe(
       value => this.getData(0)
     )
     this.applicationPlaceService.finishApplication(this.editedapplication).subscribe(
-      value => console.log(value)
+      value => console.log()
     )
   }
 
