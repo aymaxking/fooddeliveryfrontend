@@ -16,18 +16,15 @@
 <header>
   <a  href="#" target="_blank" class="logo"><i class="fas fa-utensils"></i>FoodIn</a>
   <div id="menu-bar" class="fas fa-bars"></div>
-  <a class="login float-right">LogOut</a>
+  <a class="login float-right" (click)="logout()">LogOut</a>
   <nav class="navbar" style=" padding: 0rem 15%;">
-<!--    <a class="nav-link " routerLink="/admin/" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Home</a>-->
-    <!--  <a class="nav-link" routerLink="/admin/categories" routerLinkActive="active">Categories</a>-->
       <a class="nav-link" routerLink="/admin/clients" routerLinkActive="active">Clients</a>
       <a class="nav-link" routerLink="/admin/deliveries" routerLinkActive="active">Deliveries</a>
       <a class="nav-link" routerLink="/admin/places" routerLinkActive="active">Places</a>
     </nav>
-  </header>
+</header>
   <main>
     <router-outlet></router-outlet>
   </main>
-
   </body>
   </html>

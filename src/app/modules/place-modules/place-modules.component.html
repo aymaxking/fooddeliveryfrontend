@@ -16,15 +16,14 @@
 <header>
   <a  href="#" target="_blank" class="logo"><i class="fas fa-utensils"></i>FoodIn</a>
   <div id="menu-bar" class="fas fa-bars"></div>
-  <a class="login float-right">LogOut</a>
-  <nav class="navbar" style=" padding: 0rem 15%;">
+  <nav class="navbar" style=" padding: 0rem 30%;">
     <a class="nav-link" routerLink="/place/menu" routerLinkActive="active">Menu</a>
     <a class="nav-link" routerLink="/place/orders" routerLinkActive="active">Orders</a>
   </nav>
+  <a class="login float-right" (click)="logout()" style="margin-right: 0">LogOut</a>
 </header>
 <main>
   <router-outlet></router-outlet>
 </main>
-
 </body>
 </html>

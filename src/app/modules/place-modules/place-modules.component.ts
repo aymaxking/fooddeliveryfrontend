@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-place-modules',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceModulesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
-  }
+    // @ts-ignore
+    if(localStorage.getItem("currentrole")=="place"){
 
+    }
+    else{
+      this.route.navigate(['']);
+    }
+  }
+  logout(){
+    // @ts-ignore
+    localStorage.clear()
+    this.route.navigate(['']);
+  }
 }

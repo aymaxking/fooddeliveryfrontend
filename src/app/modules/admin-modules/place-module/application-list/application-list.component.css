@@ -5,7 +5,7 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
 }
 .panel .panel-heading{
-  background:white;
+  background: transparent;
   padding: 15px;
   border-radius: 0;
 }
@@ -40,8 +40,8 @@
   border-radius: 0;
 }
 .panel .panel-body .table thead tr th{
-  color: #fff;
-  background: #8D8D8D;
+  color: #ff3838;
+  background: transparent;
   font-size: 17px;
   font-weight: 700;
   padding: 12px;
@@ -153,7 +153,7 @@ body {
 
 .search-2 {
   position: relative;
-  width: 100%
+  width: 100%;
 }
 
 .search-2 input {

@@ -133,6 +133,8 @@ export class GeneralModulesComponent implements OnInit {
           this.loginerror=false
           // @ts-ignore
           localStorage.setItem("currentuser", value.id.toString())
+          // @ts-ignore
+          localStorage.setItem("currentrole", value.role)
           if (value.role == "place") this.route.navigate(['/place']);
           else if (value.role == "admin") this.route.navigate(['/admin']);
         }

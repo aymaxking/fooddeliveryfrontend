@@ -7,8 +7,8 @@ import {PlaceModulesComponent} from "./place-modules.component";
 const routes: Routes = [
   {
     path: "",
-    component:PlaceModulesComponent,
-    children:[
+    component: PlaceModulesComponent,
+    children: [
       {
         path: "menu",
         loadChildren: () => import ('./menu-module/menu-module.module').then(m => m.MenuModuleModule),
